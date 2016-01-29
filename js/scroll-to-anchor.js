@@ -9,7 +9,7 @@
  * Licensed under GPL2. See enclosed LICENSE.
  */
 
-(function($) {
+ jQuery(document).ready(function($){
 	$('a[href*="#"]')
 	.not('a[href="#"]') // Excemption #1: dummy hrefs
 	.not('a[href*="#respond"]') // Excemption #2: WordPress comment form
@@ -22,6 +22,9 @@
 		}
 
 		var currentUrlRoot = window.location.href.split('#')[0],
+/*
+* HIER STIMMT WAS NICHT: TypeError: $(...).offset(...) is undefined
+*/
 			scrollToAnchor = $('#' + linktHref[1]).offset().top;
 
 		// Animate for targets on the same page.
@@ -38,4 +41,4 @@
 
 		return false;
 	});
-}(jQuery));
+});

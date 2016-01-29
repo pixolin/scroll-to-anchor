@@ -29,4 +29,17 @@ along with Scroll to Anchor. If not, see https://www.gnu.org/licenses/gpl-2.0.ht
 
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
-?>
+add_action('wp_enqueue_scripts', 'sta_enqueueu_js');
+
+function sta_enqueueu_js() {
+  wp_register_script(
+    $handle = 'scroll-to-anchor',
+    $src    = plugins_url( 'js/scroll-to-anchor.js', __FILE__ ),
+    $deps   = array('jquery'),
+    $ver    = 0.1,
+    $in_footer = true
+  );
+  wp_enqueue_script(
+    $handle = 'scroll-to-anchor'
+  );
+}
