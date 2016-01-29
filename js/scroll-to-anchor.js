@@ -28,6 +28,7 @@
 		var currentUrlRoot = window.location.href.split('#')[0],
 			  scrollToAnchor = $('#' + linktHref[1]);
 
+
 		    currentUrlRoot = currentUrlRoot.replace(/\/$/, '');
 				linktHref[0]   = linktHref[0].replace(/\/$/, '');
 
@@ -36,7 +37,7 @@
 		// Animate for targets on the same page.
 		if(linktHref[0] === currentUrlRoot) {
 			$('html, body')
-			.animate({ scrollTop : scrollToAnchor.offset().top - 100}, 'slow' ); // Duration: 250ms.
+			.animate({ scrollTop : scrollToAnchor.offset().top - sta_settings.distance }, parseInt(sta_settings.speed, 10) ); // Duration: 250ms.
 
 			e.preventDefault();
 			return false;

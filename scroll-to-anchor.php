@@ -9,7 +9,7 @@ Author URI:   https://pixolin.de
 License:      GPL2
 License URI:  https://www.gnu.org/licenses/gpl-2.0.html
 Domain Path:  /languages
-Text Domain:  Scroll-to-anchor
+Text Domain:  scroll-to-anchor
 
 (c) Bego Mario Garde, 2016
 Scroll to Anchor is free software: you can redistribute it and/or modify
@@ -42,9 +42,73 @@ function sta_enqueue_js( $plugin_version ) {
     $in_footer = true
   );
 
+  $sta_settings = array(
+    'distance' => sanitize_text_field( get_option( 'sta_setting_distance' ) ),
+    'speed'    => sanitize_text_field( get_option( 'sta_setting_speed' ) )
+  );
+
+  wp_localize_script(
+    $handle    = 'scroll-to-anchor',
+    $object_name = 'sta_settings',
+    $l10n      = $sta_settings
+  );
+
   wp_enqueue_script(
     $handle    = 'scroll-to-anchor'
   );
 }
 
 add_action('wp_enqueue_scripts', 'sta_enqueue_js');
+
+
+function sta_settings_api_init(){
+  add_settings_section(
+    $id = 'sta_section',
+    $title = __('Scroll to Anchor Settings', 'scroll_to_anchor'),
+    $callback = 'sta_settings_callback',
+    $page = 'reading'
+  );
+
+  add_settings_field(
+    $id = 'stafd',
+    $title = __('Distance', 'scroll-to-anchor'),
+    $callback = 'sta_settings_distance_function',
+    $page = 'reading',
+    $section = 'sta_section',
+    $args = array()
+  );
+
+
+  add_settings_field(
+    $id = 'stafs',
+    $title = __('Scroll-Speed', 'scroll-to-anchor'),
+    $callback = 'sta_settings_speed_function',
+    $page = 'reading',
+    $section = 'sta_section',
+    $args = array()
+  );
+
+  register_setting( 'reading', 'sta_setting_distance' );
+  register_setting( 'reading', 'sta_setting_speed' );
+}
+
+add_action( 'admin_init', 'sta_settings_api_init' );
+
+function sta_settings_callback() {
+  __return_false();
+}
+
+function sta_settings_distance_function() {
+  _e('Offset of Anchor', 'scroll_to_anchor');
+  echo '<br />';
+  echo '<input name="sta_setting_distance" id="sta_setting_distance" type="text" value="'.sanitize_text_field( get_option( 'sta_setting_distance' ) ).'" class="code" />';
+  _e(' Distance in Pixel', 'scroll_to_anchor');
+}
+
+function sta_settings_speed_function() {
+  _e('Speed when scrolling to anchors', 'scroll_to_anchor');
+  echo '<br />';
+  echo '<input name="sta_setting_speed" id="sta_setting_speed" type="text" value="'.sanitize_text_field( get_option( 'sta_setting_speed' ) ).'" class="code" />';
+  _e(' Speed Value (0 – 10000)', 'scroll_to_anchor');
+
+}
