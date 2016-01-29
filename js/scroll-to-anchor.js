@@ -22,15 +22,12 @@
 		}
 
 		var currentUrlRoot = window.location.href.split('#')[0],
-/*
-* HIER STIMMT WAS NICHT: TypeError: $(...).offset(...) is undefined
-*/
-			scrollToAnchor = $('#' + linktHref[1]).offset().top;
+			scrollToAnchor = $('#' + linktHref[1]);
 
 		// Animate for targets on the same page.
 		if(linktHref[0] === currentUrlRoot) {
 			$('html, body')
-			.animate({ scrollTop : scrollToAnchor }, 250 ); // Duration: 250ms.
+			.animate({ scrollTop : scrollToAnchor.offset().top - 100}, 'slow' ); // Duration: 250ms.
 
 			e.preventDefault();
 			return false;
