@@ -10,11 +10,15 @@
  */
 
  jQuery(document).ready(function($){
+
 	$('a[href*="#"]')
 	.not('a[href="#"]') // Excemption #1: dummy hrefs
 	.not('a[href*="#respond"]') // Excemption #2: WordPress comment form
-	.on('click.achornav', function(e) {
+	.on('click', function(e) {
+
+		//Split link into part before and after hash mark #
 		var linktHref = this.href.split('#');
+
 
 		if(linktHref[1] === '') { // Excemption #3: orphaned # at end of URL
 			e.preventDefault();
@@ -22,7 +26,12 @@
 		}
 
 		var currentUrlRoot = window.location.href.split('#')[0],
-			scrollToAnchor = $('#' + linktHref[1]);
+			  scrollToAnchor = $('#' + linktHref[1]);
+
+		    currentUrlRoot = currentUrlRoot.replace(/\/$/, '');
+				linktHref[0]   = linktHref[0].replace(/\/$/, '');
+
+				console.log( currentUrlRoot + ':' + linktHref[0]);
 
 		// Animate for targets on the same page.
 		if(linktHref[0] === currentUrlRoot) {

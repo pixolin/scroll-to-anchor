@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name:  Scroll to Anchor
-Version:      0.1
+Version:      0.2
 Plugin URI:   https://github.com/pixolin/Scroll-to-anchor
 Description:  Adds jQuery function to scroll smoothly to anchors in a web page.
 Author:       Bego Mario Garde
@@ -29,20 +29,22 @@ along with Scroll to Anchor. If not, see https://www.gnu.org/licenses/gpl-2.0.ht
 
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
-function sta_enqueueu_js() {
-  //$plugin      = get_plugin_data( __FILE__ );
+//Register and enqueue the jQuery function for smooth scrolling
+function sta_enqueue_js( $plugin_version ) {
+  $file_data   = get_file_data( __FILE__, array( 'version' => 'Version' ) );
   $maybe_min   = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 
   wp_register_script(
     $handle    = 'scroll-to-anchor',
     $src       = plugins_url( "js/scroll-to-anchor$maybe_min.js", __FILE__ ),
     $deps      = array('jquery'),
-  //  $ver       = $plugin['Version'],
+    $ver       = $file_data['version'],
     $in_footer = true
   );
+
   wp_enqueue_script(
     $handle    = 'scroll-to-anchor'
   );
 }
 
-add_action('wp_enqueue_scripts', 'sta_enqueueu_js');
+add_action('wp_enqueue_scripts', 'sta_enqueue_js');
