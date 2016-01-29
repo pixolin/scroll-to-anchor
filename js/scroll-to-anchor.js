@@ -28,11 +28,8 @@
 		var currentUrlRoot = window.location.href.split('#')[0],
 			  scrollToAnchor = $('#' + linktHref[1]);
 
-
 		    currentUrlRoot = currentUrlRoot.replace(/\/$/, '');
 				linktHref[0]   = linktHref[0].replace(/\/$/, '');
-
-				console.log( currentUrlRoot + ':' + linktHref[0]);
 
 		// Animate for targets on the same page.
 		if(linktHref[0] === currentUrlRoot) {
