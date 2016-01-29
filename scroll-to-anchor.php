@@ -30,14 +30,14 @@ along with Scroll to Anchor. If not, see https://www.gnu.org/licenses/gpl-2.0.ht
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
 function sta_enqueueu_js() {
-  $plugin      = get_plugin_data( __FILE__ );
+  //$plugin      = get_plugin_data( __FILE__ );
   $maybe_min   = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 
   wp_register_script(
     $handle    = 'scroll-to-anchor',
     $src       = plugins_url( "js/scroll-to-anchor$maybe_min.js", __FILE__ ),
     $deps      = array('jquery'),
-    $ver       = $plugin['Version'],
+  //  $ver       = $plugin['Version'],
     $in_footer = true
   );
   wp_enqueue_script(
