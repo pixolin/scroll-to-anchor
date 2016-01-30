@@ -17,9 +17,24 @@ function sta_enqueue_js( $plugin_version ) {
     $in_footer = true
   );
 
+  $distance    = absint( get_option( 'sta_setting_distance' ), 200 );
+  if(empty( $distance )) {
+    $distance = 0;
+  }
+
+  $speed_settings = (array) get_option( 'sta_setting_speed' ) ;
+  //Check whether the user has set a speed yet. Use default speed, if not.
+  if(!isset($speed_settings['speed_selection'])) $speed_settings['speed_selection'] = 5000;
+
+  $speed        = absint($speed_settings['speed_selection']);
+  if(empty( $speed )) {
+    $speed = 5000;
+  }
+
+
   $sta_settings = array(
-    'distance' => absint( get_option( 'sta_setting_distance' ) ),
-    'speed'    => absint( get_option( 'sta_setting_speed' ) )
+    'distance' => $distance,
+    'speed'    => $speed
   );
 
   wp_localize_script(

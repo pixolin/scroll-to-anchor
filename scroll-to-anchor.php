@@ -6,7 +6,7 @@ Plugin URI:   https://github.com/pixolin/Scroll-to-anchor
 Description:  Adds jQuery function to scroll smoothly to anchors in a web page.
 Author:       Bego Mario Garde
 Author URI:   https://pixolin.de
-License:      GPL2
+License:      GPLv2
 License URI:  https://www.gnu.org/licenses/gpl-2.0.html
 Domain Path:  /languages
 Text Domain:  scroll-to-anchor
@@ -25,8 +25,8 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Scroll to Anchor. If not, see https://www.gnu.org/licenses/gpl-2.0.html.
 
-Credits: This plugin uses JavaScript (c) Caspar Hübinger, 2016,
-         lincensed under GPL2
+Credits: This plugin uses JavaScript by (c) Caspar Hübinger, 2016,
+         lincensed under GPLv2
 */
 
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
