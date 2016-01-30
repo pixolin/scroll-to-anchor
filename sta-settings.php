@@ -108,22 +108,17 @@ function sta_sanitize( $input ){
 
   // Loop through the input and sanitize each of the values
 	foreach ( $input as $key => $val ) {
-		switch ( $key ) {
-			case 'speed':
-				$new_input[ $key ] = absint( $val );
-				break;
-			case 'distance':
-        $new_input[$key] = absint( $val );
-        if( $val > 600 ) {
+
+    $new_input[ $key ] = absint( $val );
+
+    if( ($key === 'distance') && ($val > 600) ) {
   				$new_input[ $key ] = 0;
           add_settings_error(
             'sta_setting_distance',
             'invalid-value',
             'Invalid value anchor offset'
           );
-        }
-				break;
-		} //switch ends here
+		}
 	}
 	return $new_input;
 }
