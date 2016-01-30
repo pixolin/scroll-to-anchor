@@ -35,3 +35,5 @@ define( 'PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 
 require_once( PLUGIN_DIR . '/sta-settings.php' ); // Plugin Settings
 require_once( PLUGIN_DIR . '/sta-enqueue-js.php' ); // Enqueue JS
+
+register_activation_hook( __FILE__, 'sta_check_options' );

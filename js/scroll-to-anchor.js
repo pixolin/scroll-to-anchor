@@ -34,7 +34,7 @@
 		// Animate for targets on the same page.
 		if(linktHref[0] === currentUrlRoot) {
 			$('html, body')
-			.animate({ scrollTop : scrollToAnchor.offset().top - sta_settings.distance }, parseInt(sta_settings.speed, 10) ); // Duration: 250ms.
+			.animate({ scrollTop : scrollToAnchor.offset().top - sta_settings.distance }, parseInt(sta_settings.speed, 10) );
 
 			e.preventDefault();
 			return false;
