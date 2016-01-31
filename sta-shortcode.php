@@ -8,10 +8,10 @@ add_shortcode( 'anchor', 'sta_anchor' );
 
 function sta_anchor( $atts ){
   $pairs = array(
-    'id' => 'foo'
+    'id' => ''
   );
   $a = shortcode_atts( $pairs, $atts );
 
-  $html = '<div id="'.$a['id'].'"></div>';
+  $html = '<div id="'.$a['id'].'">Anchor</div>';
   return $html;
 }

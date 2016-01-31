@@ -1,12 +1,21 @@
 <?php
 /*
-* Plugin Settings
-* To edit your settings visit Settings > Reading
-* in your WordPress Back End.
-*/
+ * Plugin Settings
+ * Edit settings in menu Settings > Reading in your WordPress Back End.
+ *
+ * Contents:
+ * 1. Option Defaults
+ * 2. Settings Section and Fields in Settings > Reading
+ * 3. Form Fields
+ * 4. Validation
+ */
 
-//Setting option defaults upon plugin activation
-function sta_check_options() {
+ /* ------------------------------------------------------------------------- *
+  * 1. Option Defaults
+  * ------------------------------------------------------------------------- */
+
+//register_activation_hook() in file scroll-to-anchor.php
+function sta_initial_options() {
     //check if option is already present
     if(!get_option('scroll_to_anchor')) {
         //not present, so add
@@ -17,6 +26,10 @@ function sta_check_options() {
         add_option('scroll_to_anchor', $op );
     }
 }
+
+/* ------------------------------------------------------------------------- *
+ * 2. Settings Section and Fields in Settings > Reading
+ * ------------------------------------------------------------------------- */
 
 function sta_settings_api_init(){
 
@@ -55,7 +68,7 @@ add_action( 'admin_init', 'sta_settings_api_init' );
 
 
 /* ------------------------------------------------------------------------- *
- * Form Fields
+ * 3. Form Fields
  * ------------------------------------------------------------------------- */
 
 //Form Field DISTANCE
@@ -96,9 +109,9 @@ function sta_settings_speed_function() {
 }
 
 /* ------------------------------------------------------------------------- *
- * Validation
- *  Credits: Tom McFarlin
- *  https://tommcfarlin.com/sanitizing-arrays-the-wordpress-settings-api/
+ * 4. Validation
+ *    Credits: Tom McFarlin
+ *    https://tommcfarlin.com/sanitizing-arrays-the-wordpress-settings-api/
  * ------------------------------------------------------------------------- */
 
 function sta_sanitize( $input ){

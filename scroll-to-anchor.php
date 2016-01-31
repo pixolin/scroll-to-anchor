@@ -38,6 +38,7 @@ define( 'PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 require_once( PLUGIN_DIR . '/sta-settings.php' ); // Plugin Settings
 require_once( PLUGIN_DIR . '/sta-enqueue-js.php' ); // Enqueue JS
 require_once( PLUGIN_DIR . '/sta-shortcode.php' ); // Add Shortcode
+require_once( PLUGIN_DIR . '/sta-tinymce-button.php' ); // TinyMCE Button
 
 //Set some options on plugin activation
-register_activation_hook( __FILE__, 'sta_check_options' );
+register_activation_hook( __FILE__, 'sta_initial_options' );
