@@ -31,7 +31,7 @@ function sta_settings_api_init(){
   //Settings Field Distance
   add_settings_field(
     $id = 'sta_distance',
-    $title = __('Distance', 'scroll-to-anchor'),
+    $title = __('Offset', 'scroll-to-anchor'),
     $callback = 'sta_settings_distance_function',
     $page = 'reading',
     $section = 'sta_section',
@@ -41,7 +41,7 @@ function sta_settings_api_init(){
   //Settings Field Scroll Speed
   add_settings_field(
     $id = 'sta_speed',
-    $title = __('Scroll-Speed', 'scroll-to-anchor'),
+    $title = __('Animation-Speed', 'scroll-to-anchor'),
     $callback = 'sta_settings_speed_function',
     $page = 'reading',
     $section = 'sta_section',
@@ -63,7 +63,7 @@ function sta_settings_distance_function() {
   $current = (array) get_option( 'scroll_to_anchor' );
 
   $html = __('Show anchor with an offset of…', 'scroll_to_anchor').'<br />';
-  $html .= '<input name="scroll_to_anchor[distance]" id="sta-distance" type="text" value="'. $current['distance'].'" class="code" size="5"/> ';
+  $html .= '<input name="scroll_to_anchor[distance]" id="sta-distance" type="text" value="'. $current['distance'].'" size="5"/> ';
   $html .= '<label for="sta-distance">'.__('Pixel', 'scroll_to_anchor') . ' (0 - 600)</label>';
 
   echo ( $html );

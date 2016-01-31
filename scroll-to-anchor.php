@@ -25,8 +25,10 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Scroll to Anchor. If not, see https://www.gnu.org/licenses/gpl-2.0.html.
 
-Credits: This plugin uses JavaScript by (c) Caspar Hübinger, 2016,
-         lincensed under GPLv2
+Credits:
+(c) Caspar Hübinger, 2016 for used JavaScript, GPLv2
+(c) Tom McFarlin, 2015 for Settings Field Sanitization, GPLv2
+Thank you for providing your code to the public.
 */
 
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
@@ -35,5 +37,7 @@ define( 'PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 
 require_once( PLUGIN_DIR . '/sta-settings.php' ); // Plugin Settings
 require_once( PLUGIN_DIR . '/sta-enqueue-js.php' ); // Enqueue JS
+require_once( PLUGIN_DIR . '/sta-shortcode.php' ); // Add Shortcode
 
+//Set some options on plugin activation
 register_activation_hook( __FILE__, 'sta_check_options' );
