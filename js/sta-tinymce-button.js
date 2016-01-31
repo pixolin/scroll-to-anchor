@@ -2,7 +2,7 @@
   tinymce.PluginManager.add('sta_tc_button', function( editor, url ) {
     editor.addButton( 'sta_tc_button', {
       title: 'Anchor',
-      icon:  'icon dashicons-admin-post',
+      icon:  'icon sta-anchor-icon',
 
       onclick:
         function() {
