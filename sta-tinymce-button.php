@@ -5,7 +5,6 @@
  */
 
 add_action('admin_head', 'sta_tinymce_button');
-
 function sta_tinymce_button() {
   global $typenow;
    // check user permissions
@@ -35,7 +34,9 @@ function sta_register_my_tc_button( $buttons ){
   return $buttons;
 }
 
+
 //Stylesheet for Back End
+add_action('admin_enqueue_scripts', 'sta_admin_style');
 function sta_admin_style() {
     wp_enqueue_style(
       'sta-backend',
@@ -43,4 +44,9 @@ function sta_admin_style() {
     );
 }
 
-add_action('admin_enqueue_scripts', 'sta_admin_style');
+//translation of the tinymce button
+function sta_tinymce_add_locale( $locales ) {
+    $locales ['sta_tc_button'] = plugin_dir_path ( __FILE__ ) . 'sta-tinymce-button-langs.php';
+    return $locales;
+}
+add_filter('mce_external_languages', 'sta_tinymce_add_locale');

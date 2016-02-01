@@ -18,11 +18,16 @@
                   label: 'CSS-Class (optional)'
                   }],
                 onsubmit: function( e ) {
-                  editor.insertContent( '[anchor id="' + e.data.name + '" class="' + e.data.class + '"]');
-                }
-          } );
-        }
+                  var content = '[anchor id="' + e.data.name + '"';
+                  if(e.data.class) {
+                    content += ' class="' + e.data.class + '"';
+                  }
+                  content += ']';
+                  editor.insertContent( content );
+                } //onsubmit
+          } );//editor.windowManager
+        }//function
 
-    });
-  });
+    });//editor.addButton
+  });//tinymce.PluginManager
 })();
