@@ -10,25 +10,30 @@ function sta_anchor( $atts ){
 
   //Shortcode Attributes
   $pairs = array(
-    'id' => ''
+    'id'    => '',
+    'class' => ''
   );
   $a = shortcode_atts( $pairs, $atts );
 
+  $a['id'] = esc_attr( $a['id'] );
+  $a['class'] = esc_attr( $a['class'] );
+
   //fetch option to see whether anchor should be displayed
   $current = (array) get_option( 'scroll_to_anchor' );
-  if( isset($current['show']) ) $display = true;
 
-  $html = '<div id="'.$a['id'].'" class="sta-anchor '.$a['id'].'" ';
 
-    if($display) {
-      $html .= '>';
-      $html .= '<img src="'.plugins_url( "img/anchor.svg", __FILE__ ).'" width="20" height="20" border="0">Anchor: ' . $a['id'];
+  //create the html output,
+  $html = '<span id="'.$a['id'].'" ';
+
+    //add classes and display more or less
+    if( !isset($current['show']) || $a['class'] == 'hidden' ) {
+      $html .= 'class="sta-anchor '.$a['id'].'">';
     } else {
-      $html .= 'style="visibility:hidden;height:0;" >';
+      $html .= 'class="sta-anchor '.$a['id'].'">Anchor: ' . $a['id'];
     }
 
-  $html .= '</div>';
+  $html .= '</span>';
 
-  // … finally return it.
+  //and finally return it.
   return $html;
 }

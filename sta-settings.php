@@ -64,7 +64,7 @@ function sta_settings_api_init(){
   //Settings Show Anchor
   add_settings_field(
     $id = 'sta_show',
-    $title =__('Show anchor in front end'),
+    $title =__('Show anchor(s) in front end'),
     $callback = 'sta_settings_showanchor_function',
     $page = 'reading',
     $section = 'sta_section',
@@ -87,7 +87,7 @@ function sta_settings_distance_function() {
 
   $html = __('Show anchor with an offset of…', 'scroll_to_anchor').'<br />';
   $html .= '<input name="scroll_to_anchor[distance]" id="sta-distance" type="text" value="'. $current['distance'].'" size="5"/> ';
-  $html .= '<label for="sta-distance">'.__('Pixel', 'scroll_to_anchor') . ' (0 - 600)</label>';
+  $html .= '<label for="sta-distance">'.__('Pixel', 'scroll_to_anchor') . ' (0&ndash;600 Pixel)</label>';
 
   echo ( $html );
 }
@@ -122,7 +122,7 @@ function sta_settings_showanchor_function() {
   $current = (array) get_option( 'scroll_to_anchor' );
 
   $html = '<input name="scroll_to_anchor[show]" id="sta-show" type="checkbox" value="1" ' . checked( isset( $current['show'] ), 1, false ) . '/>';
-  $html .= '<label for="sta-show">'.__('display', 'scroll_to_anchor') . '</label>';
+  $html .= '<label for="sta-show">'.__('display anchor inline as <em>Anchor: foo</em>', 'scroll_to_anchor') . '</label>';
 
   echo ( $html );
 }
