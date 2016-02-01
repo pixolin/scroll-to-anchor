@@ -46,7 +46,7 @@ function sta_admin_style() {
 
 //translation of the tinymce button
 function sta_tinymce_add_locale( $locales ) {
-    $locales ['sta_tc_button'] = plugin_dir_path ( __FILE__ ) . 'sta-tinymce-button-langs.php';
+    $locales [] = plugin_dir_path ( __FILE__ ) . 'sta-tinymce-button-langs.php';
     return $locales;
 }
 add_filter('mce_external_languages', 'sta_tinymce_add_locale');

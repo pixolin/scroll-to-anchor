@@ -85,9 +85,9 @@ add_action( 'admin_init', 'sta_settings_api_init' );
 function sta_settings_distance_function() {
   $current = (array) get_option( 'scroll_to_anchor' );
 
-  $html = __('Show anchor with an offset of…', 'scroll_to_anchor').'<br />';
+  $html = __('Show anchor with an offset of…', 'scroll-to-anchor').'<br />';
   $html .= '<input name="scroll_to_anchor[distance]" id="sta-distance" type="text" value="'. $current['distance'].'" size="5"/> ';
-  $html .= '<label for="sta-distance">'.__('Pixel', 'scroll_to_anchor') . ' (0&ndash;600 Pixel)</label>';
+  $html .= '<label for="sta-distance">'.__('Pixel', 'scroll-to-anchor') . ' (0&ndash;600 Pixel)</label>';
 
   echo ( $html );
 }
@@ -99,13 +99,13 @@ function sta_settings_speed_function() {
   $current = (array) get_option( 'scroll_to_anchor' );
 
   $options = array(
-      5000 => 'slow',
-      1000 => 'medium',
-       500 => 'fast',
-         0 => 'disabled'
+      5000 => __('slow','scroll-to-anchor'),
+      1000 => __('medium','scroll-to-anchor'),
+       500 => __('fast','scroll-to-anchor'),
+         0 => __('disabled','scroll-to-anchor')
   );
 
-  $html = __('Animation speed when scrolling to anchors', 'scroll_to_anchor').'<br />';
+  $html = __('Animation speed when scrolling to anchors', 'scroll-to-anchor').'<br />';
   $html .= '<select id="speed" name="scroll_to_anchor[speed]}">';
 
   foreach ( $options as $value => $text) {
@@ -122,7 +122,7 @@ function sta_settings_showanchor_function() {
   $current = (array) get_option( 'scroll_to_anchor' );
 
   $html = '<input name="scroll_to_anchor[show]" id="sta-show" type="checkbox" value="1" ' . checked( isset( $current['show'] ), 1, false ) . '/>';
-  $html .= '<label for="sta-show">'.__('display anchor inline as <em>Anchor: foo</em>', 'scroll_to_anchor') . '</label>';
+  $html .= '<label for="sta-show">'.__('display anchor inline as <em>Anchor: foo</em>', 'scroll-to-anchor') . '</label>';
 
   echo ( $html );
 }
