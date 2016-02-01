@@ -6,8 +6,9 @@
 
 //Register and enqueue the jQuery function for smooth scrolling
 function sta_enqueue_js( $plugin_version ) {
-  //some parameters to register and enqueue the script
+  //automatically fetch version number
   $file_data   = get_file_data( __FILE__, array( 'version' => 'Version' ) );
+  //use minified JavaScript, if not in DEBUG mode
   $maybe_min   = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 
   //register the script

@@ -25,7 +25,7 @@ function sta_tinymce_button() {
 
 //set path for the JavaScript file
 function sta_add_tinymce_plugin( $plugin_array ){
-  $plugin_array['sta_tc_button'] = plugins_url( 'js/sta-tinymce-button.js', __FILE__ );
+  $plugin_array['sta_tc_button'] = plugins_url( "js/sta-tinymce-button.js", __FILE__ );
   return $plugin_array;
 }
 

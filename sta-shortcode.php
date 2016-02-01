@@ -12,6 +12,6 @@ function sta_anchor( $atts ){
   );
   $a = shortcode_atts( $pairs, $atts );
 
-  $html = '<div id="'.$a['id'].'">Anchor</div>';
+  $html = '<div id="'.$a['id'].'" style="visibility: hidden"></div>';
   return $html;
 }
