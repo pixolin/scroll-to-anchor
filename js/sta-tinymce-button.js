@@ -12,9 +12,13 @@
                   type: 'textbox',
                   name: 'name',
                   label: 'Anchor name'
-                }],
+                },{
+                  type: 'textbox',
+                  name: 'class',
+                  label: 'CSS-Class (optional)'
+                  }],
                 onsubmit: function( e ) {
-                  editor.insertContent( '[anchor id="' + e.data.name + '"]');
+                  editor.insertContent( '[anchor id="' + e.data.name + '" class="' + e.data.class + '"]');
                 }
           } );
         }

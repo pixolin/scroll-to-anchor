@@ -27,9 +27,9 @@ function sta_anchor( $atts ){
 
     //add classes and display more or less
     if( !isset($current['show']) || $a['class'] == 'hidden' ) {
-      $html .= 'class="sta-anchor '.$a['id'].'">';
+      $html .= 'class="sta-anchor '.$a['class'].'" aria-hidden="true">';
     } else {
-      $html .= 'class="sta-anchor '.$a['id'].'">Anchor: ' . $a['id'];
+      $html .= 'class="sta-anchor '.$a['class'].'">Anchor: ' . $a['id'];
     }
 
   $html .= '</span>';
