@@ -8,7 +8,10 @@
  * 2. Settings Section and Fields in Settings > Reading
  * 3. Form Fields
  * 4. Validation
+ * 5. Removing Option Settings upon Uninstall
  */
+
+defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
  /* ------------------------------------------------------------------------- *
   * 1. Option Defaults
@@ -153,4 +156,13 @@ function sta_sanitize( $input ){
 		}
 	}
 	return $new_input;
+}
+
+/* ------------------------------------------------------------------------- *
+ * 5. Removing Option Settings upon Uninstall
+ * ------------------------------------------------------------------------- */
+
+function sta_uninstall_options() {
+  delete_option( 'scroll_to_anchor' );
+  //Thank you for using it.
 }
