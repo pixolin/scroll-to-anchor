@@ -61,6 +61,16 @@ function sta_settings_api_init(){
     $args = array()
   );
 
+  //Settings Show Anchor
+  add_settings_field(
+    $id = 'sta_show',
+    $title =__('Show anchor in front end'),
+    $callback = 'sta_settings_showanchor_function',
+    $page = 'reading',
+    $section = 'sta_section',
+    $args = array()
+  );
+
   register_setting( 'reading', 'scroll_to_anchor', 'sta_sanitize' );
 }
 
@@ -106,6 +116,15 @@ function sta_settings_speed_function() {
   $html .= '</select>';
 
   echo( $html );
+}
+
+function sta_settings_showanchor_function() {
+  $current = (array) get_option( 'scroll_to_anchor' );
+
+  $html = '<input name="scroll_to_anchor[show]" id="sta-show" type="checkbox" value="1" ' . checked( isset( $current['show'] ), 1, false ) . '/>';
+  $html .= '<label for="sta-show">'.__('display', 'scroll_to_anchor') . '</label>';
+
+  echo ( $html );
 }
 
 /* ------------------------------------------------------------------------- *
