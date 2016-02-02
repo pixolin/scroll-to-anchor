@@ -4,11 +4,13 @@
  * Adds shortcode to easily add anchors in Text
  */
 
+add_action( 'init', 'sta_register_shortcode');
 if( !function_exists( 'sta_register_shortcode' ) ) {
   function sta_register_shortcode() {
     add_shortcode( 'sta_anchor', 'sta_anchor' );
   }
 }
+
 
 if( !function_exists( 'sta_anchor' ) ) {
   function sta_anchor( $atts ){

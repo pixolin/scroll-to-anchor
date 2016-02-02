@@ -18,9 +18,12 @@
                   label: 'CSS-Class (optional)'
                   }],
                 onsubmit: function( e ) {
-                  var content = '[anchor id="' + e.data.name + '"';
+                  var content = '[sta_anchor ';
+                  if(e.data.name) {
+                    content += 'id="' + e.data.name + '" ';
+                  }
                   if(e.data.class) {
-                    content += ' class="' + e.data.class + '"';
+                    content += 'class="' + e.data.class + '"';
                   }
                   content += ']';
                   editor.insertContent( content );
