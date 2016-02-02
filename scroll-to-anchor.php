@@ -37,14 +37,35 @@ define( 'PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 
 //Localize
 add_action( 'plugins_loaded', 'sta_load_textdomain' );
-function sta_load_textdomain() {
-  load_plugin_textdomain( 'scroll-to-anchor', false, plugin_basename( dirname( __FILE__ ) ) . '/languages' );
+
+if( !function_exists('sta_load_textdomain')) {
+  function sta_load_textdomain() {
+    load_plugin_textdomain( 'scroll-to-anchor', false, plugin_basename( dirname( __FILE__ ) ) . '/languages' );
+  }
 }
 
-require_once( PLUGIN_DIR . '/sta-settings.php' ); // Plugin Settings
-require_once( PLUGIN_DIR . '/sta-enqueue-js.php' ); // Enqueue JS
-require_once( PLUGIN_DIR . '/sta-shortcode.php' ); // Add Shortcode
-require_once( PLUGIN_DIR . '/sta-tinymce-button.php' ); // TinyMCE Button
+require_once( PLUGIN_DIR . '/lib/sta-enqueue-js.php' ); // Enqueue JS
+require_once( PLUGIN_DIR . '/lib/sta-shortcode.php' ); // Add Shortcode
 
-//Set some options on plugin activation
-register_activation_hook( __FILE__, 'sta_initial_options' );
+if ( is_admin() ) {
+  require_once( PLUGIN_DIR . '/admin/sta-settings.php' ); // Plugin Settings
+  require_once( PLUGIN_DIR . '/admin/sta-tinymce-button.php' ); // TinyMCE Button
+};
+
+//register_activation_hook() in file scroll-to-anchor.php
+register_activation_hook( __FILE__ , 'sta_initial_options' );
+
+if( !function_exists('sta_initial_options') ) {
+  function sta_initial_options() {
+      //check if option is already present
+      if(!get_option('scroll_to_anchor')) {
+          //not present, so add
+          $op = array(
+            'speed'    => 5000,
+            'distance' => 50,
+            'show'     => 1
+          );
+          add_option('scroll_to_anchor', $op );
+      }
+  }
+}
