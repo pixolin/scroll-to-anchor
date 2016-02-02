@@ -17,7 +17,7 @@ if( !function_exists('sta_enqueue_js') ) {
     //register the script
     wp_register_script(
       $handle    = 'scroll-to-anchor',
-      $src       = plugins_url( "js/scroll-to-anchor$maybe_min.js", __FILE__ ),
+      $src       = plugins_url( "../js/scroll-to-anchor$maybe_min.js", __FILE__ ),
       $deps      = array('jquery'),
       $ver       = $file_data['version'],
       $in_footer = true
