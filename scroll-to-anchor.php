@@ -31,41 +31,43 @@ Credits:
 Thank you for providing your code to the public.
 */
 
-defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
+defined('ABSPATH') or die('No script kiddies please!');
 
-define( 'PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+define('PLUGIN_DIR', plugin_dir_path(__FILE__));
 
 //Localize
-add_action( 'plugins_loaded', 'sta_load_textdomain' );
+add_action('plugins_loaded', 'sta_load_textdomain');
 
-if( !function_exists('sta_load_textdomain')) {
-  function sta_load_textdomain() {
-    load_plugin_textdomain( 'scroll-to-anchor', false, plugin_basename( dirname( __FILE__ ) ) . '/languages' );
-  }
+if (!function_exists('sta_load_textdomain')) {
+    function sta_load_textdomain()
+    {
+        load_plugin_textdomain('scroll-to-anchor', false, plugin_basename(dirname(__FILE__)).'/languages');
+    }
 }
 
-require_once( PLUGIN_DIR . '/includes/sta-enqueue-js.php' ); // Enqueue JS
-require_once( PLUGIN_DIR . '/includes/sta-shortcode.php' ); // Add Shortcode
+require_once PLUGIN_DIR.'/includes/sta-enqueue-js.php'; // Enqueue JS
+require_once PLUGIN_DIR.'/includes/sta-shortcode.php'; // Add Shortcode
 
-if ( is_admin() ) {
-  require_once( PLUGIN_DIR . '/settings/sta-settings.php' ); // Plugin Settings
-  require_once( PLUGIN_DIR . '/admin/sta-tinymce-button.php' ); // TinyMCE Button
+if (is_admin()) {
+    require_once PLUGIN_DIR.'/settings/sta-settings.php'; // Plugin Settings
+  require_once PLUGIN_DIR.'/admin/sta-tinymce-button.php'; // TinyMCE Button
 };
 
-register_activation_hook( __FILE__ , 'sta_initial_options' );
+register_activation_hook(__FILE__, 'sta_initial_options');
 
-if( !function_exists('sta_initial_options') ) {
-  function sta_initial_options() {
-      //check if option is already present
-      if(!get_option('scroll_to_anchor')) {
+if (!function_exists('sta_initial_options')) {
+    function sta_initial_options()
+    {
+        //check if option is already present
+      if (!get_option('scroll_to_anchor')) {
           //not present, so add
           $op = array(
-            'speed'    => 5000,
+            'speed' => 5000,
             'distance' => 50,
-            'show'     => 1,
-            'label'    => 'Anchor'
+            'show' => 1,
+            'label' => 'Anchor',
           );
-          add_option('scroll_to_anchor', $op );
+          add_option('scroll_to_anchor', $op);
       }
-  }
+    }
 }
