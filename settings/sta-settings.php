@@ -47,10 +47,20 @@ if( !function_exists( 'sta_settings_api_init' ) ){
       $args = array()
     );
 
+    //Settings Label
+    add_settings_field(
+      $id = 'sta_label',
+      $title =__('Label of the anchor', 'scroll-to-anchor'),
+      $callback = 'sta_settings_label_function',
+      $page = 'reading',
+      $section = 'sta_section',
+      $args = array()
+    );
+
     //Settings Show Anchor
     add_settings_field(
       $id = 'sta_show',
-      $title =__('Show anchor(s) in front end'),
+      $title =__('Show anchor(s) in front end', 'scroll-to-anchor'),
       $callback = 'sta_settings_showanchor_function',
       $page = 'reading',
       $section = 'sta_section',
@@ -105,6 +115,22 @@ if( !function_exists( 'sta_settings_speed_function' ) ) {
   }
 }
 
+//form field for anchor label
+if( !function_exists( 'sta_settings_label_function' ) ) {
+  function sta_settings_label_function() {
+    $current = (array) get_option( 'scroll_to_anchor' );
+
+    $html = __('By default anchors are labeled as <em>Anchor: foo</em>, <br />
+    but you can rename the label here.', 'scroll-to-anchor').'<br />';
+    $html .= '<label for="sta-label">'.__('Name:', 'scroll-to-anchor') . '</label> ';
+    $html .= '<input name="scroll_to_anchor[label]" id="sta-label" type="text" value="'. $current['label'].'" /> ';
+
+
+    echo ( $html );
+  }
+}
+
+//checkbox show anchor
 if( !function_exists( 'sta_settings_showanchor_function' ) ) {
   function sta_settings_showanchor_function() {
     $current = (array) get_option( 'scroll_to_anchor' );
@@ -129,17 +155,22 @@ if( !function_exists( 'sta_sanitize' ) ) {
     // Loop through the input and sanitize each of the values
   	foreach ( $input as $key => $val ) {
 
-      $new_input[ $key ] = absint( $val );
+      if( $key == 'label' ) {
+        $new_input[ $key ] = sanitize_text_field( $val );
+      } else {
+        $new_input[ $key ] = absint( $val );
 
-      if( ($key === 'distance') && ($val > 600) ) {
-    				$new_input[ $key ] = 0;
-            add_settings_error(
-              'sta_setting_distance',
-              'invalid-value',
-              'Invalid value anchor offset'
-            );
-  		}
-  	}
+        if( ($key === 'distance') && ($val > 600) ) {
+              $new_input[ $key ] = 0;
+              add_settings_error(
+                'sta_setting_distance',
+                'invalid-value',
+                'Invalid value anchor offset'
+              );
+        }
+      }
+
+    }
   	return $new_input;
   }
 }

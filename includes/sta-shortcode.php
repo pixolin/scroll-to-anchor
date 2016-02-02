@@ -36,7 +36,7 @@ if( !function_exists( 'sta_anchor' ) ) {
       if( !isset($current['show']) || $a['class'] == 'hidden' ) {
         $html .= 'class="sta-anchor '.$a['class'].'" aria-hidden="true">';
       } else {
-        $html .= 'class="sta-anchor '.$a['class'].'">' . __('Anchor', 'scroll-to-anchor').': ' . $a['id'];
+        $html .= 'class="sta-anchor '.$a['class'].'">' . $current['label'] .': ' . $a['id'];
       }
 
     $html .= '</span>';

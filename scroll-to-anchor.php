@@ -62,7 +62,8 @@ if( !function_exists('sta_initial_options') ) {
           $op = array(
             'speed'    => 5000,
             'distance' => 50,
-            'show'     => 1
+            'show'     => 1,
+            'label'    => 'Anchor'
           );
           add_option('scroll_to_anchor', $op );
       }
