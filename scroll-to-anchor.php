@@ -44,11 +44,11 @@ if( !function_exists('sta_load_textdomain')) {
   }
 }
 
-require_once( PLUGIN_DIR . '/lib/sta-enqueue-js.php' ); // Enqueue JS
-require_once( PLUGIN_DIR . '/lib/sta-shortcode.php' ); // Add Shortcode
+require_once( PLUGIN_DIR . '/includes/sta-enqueue-js.php' ); // Enqueue JS
+require_once( PLUGIN_DIR . '/includes/sta-shortcode.php' ); // Add Shortcode
 
 if ( is_admin() ) {
-  require_once( PLUGIN_DIR . '/admin/sta-settings.php' ); // Plugin Settings
+  require_once( PLUGIN_DIR . '/settings/sta-settings.php' ); // Plugin Settings
   require_once( PLUGIN_DIR . '/admin/sta-tinymce-button.php' ); // TinyMCE Button
 };
 
