@@ -4,7 +4,7 @@
  * Adds shortcode to easily add anchors in Text
  */
 
-add_shortcode( 'anchor', 'sta_anchor' );
+add_shortcode( 'sta_anchor', 'sta_anchor' );
 
 if( !function_exists( 'sta_anchor' ) ) {
   function sta_anchor( $atts ){

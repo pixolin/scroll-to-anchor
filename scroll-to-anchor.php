@@ -52,7 +52,6 @@ if ( is_admin() ) {
   require_once( PLUGIN_DIR . '/admin/sta-tinymce-button.php' ); // TinyMCE Button
 };
 
-//register_activation_hook() in file scroll-to-anchor.php
 register_activation_hook( __FILE__ , 'sta_initial_options' );
 
 if( !function_exists('sta_initial_options') ) {
