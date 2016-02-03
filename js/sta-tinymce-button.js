@@ -1,20 +1,21 @@
 (function() {
-  tinymce.PluginManager.add('sta_tc_button', function(editor, url) {
-    editor.addButton('sta_tc_button', {
+  tinymce.PluginManager.requireLangPack('staButton', 'de');
+  tinymce.PluginManager.add('staButton', function(editor, url) {
+    editor.addButton('staButton', {
       title: 'Anchor',
       icon: 'icon sta-anchor-icon',
 
       onclick: function() {
           editor.windowManager.open({
-            title: 'Insert anchor',
+            title: 'insert_anchor',
             body: [{
               type: 'textbox',
               name: 'name',
-              label: 'Anchor name'
+              label: 'anchor_name'
             }, {
               type: 'textbox',
               name: 'class',
-              label: 'CSS-Class (optional)'
+              label: 'css_class'
             }],
             onsubmit: function(e) {
                 var content = '[sta_anchor';
