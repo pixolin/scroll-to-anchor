@@ -1,6 +1,8 @@
-# Scroll-to-everything
+# Scroll-to-anchor
 
 ## Add anchors and use a smooth scrolling animation for a better user experience.
+
+![Scroll-to-anchor](/assets/banner-1544x500.png)
 
 Do you write longer text in posts or pages and want to provide your website visitors links to skip parts?
 
@@ -15,3 +17,6 @@ The animation is too fast or too slow? Under **Settings > Reading** you can sele
 You can also set an **offset** for anchors, which comes handy if you e.g. use a fixed header.
 
 Finally, there is a setting whether anchors should be **displayed front end** with an anchor or be hidden entirely.
+
+
+The banner photo used for WordPress plugin repository was published in **Public Domain** by National Oceanic and Atmospheric Administration/Department of Commerce, photograph by C&GS Season's Report Miller, 1911.
