@@ -80,7 +80,7 @@ if ( ! function_exists( 'sta_settings_distance_function' ) ) {
 		$current = (array) get_option( 'scroll_to_anchor' );
 
 		$html = __( 'Show anchor with an offset of…', 'scroll-to-anchor' ).'<br />';
-		$html .= '<input name="scroll_to_anchor[distance]" id="sta-distance" type="text" value="'.$current['distance'].'" size="5"/> ';
+		$html .= '<input name="scroll_to_anchor[distance]" id="sta-distance" type="text" value="'.esc_attr( $current['distance'] ).'" size="5"/> ';
 		$html .= '<label for="sta-distance">'.__( 'Pixel', 'scroll-to-anchor' ).' (0&ndash;600 Pixel)</label>';
 
 		echo  $html;
@@ -104,7 +104,7 @@ if ( ! function_exists( 'sta_settings_speed_function' ) ) {
 
 		foreach ( $options as $value => $text ) {
 			$html .= '<option value="'.$value.'"';
-			$html .= selected( $current['speed'], $value, false ).'>'.$text.'</option>';
+			$html .= selected( esc_attr( $current['speed'] ), $value, false ).'>'.$text.'</option>';
 		}
 
 		$html .= '</select>';
@@ -121,7 +121,7 @@ if ( ! function_exists( 'sta_settings_label_function' ) ) {
 		$html = __( 'By default anchors are labeled as <em>Anchor: foo</em>, <br />
     but you can rename the label here.', 'scroll-to-anchor' ).'<br />';
 		$html .= '<label for="sta-label">'.__( 'Name:', 'scroll-to-anchor' ).'</label> ';
-		$html .= '<input name="scroll_to_anchor[label]" id="sta-label" type="text" value="'.$current['label'].'" /> ';
+		$html .= '<input name="scroll_to_anchor[label]" id="sta-label" type="text" value="'.esc_attr( $current['label'] ).'" /> ';
 
 		echo  $html;
 	}
@@ -140,7 +140,7 @@ if ( ! function_exists( 'sta_settings_showanchor_function' ) ) {
 }
 
 /* ------------------------------------------------------------------------- *
- * 4. Validation
+ * 4. Validation and Sanitization
  * ------------------------------------------------------------------------- */
 
 if ( ! function_exists( 'sta_sanitize' ) ) {

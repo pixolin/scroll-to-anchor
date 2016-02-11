@@ -21,8 +21,6 @@ if ( ! function_exists( 'sta_anchor' ) ) {
 		);
 
 		$a = shortcode_atts( $pairs, $atts );
-		$a['id']    = esc_attr( $a['id'] );
-		$a['class'] = esc_attr( $a['class'] );
 
 		//fetch option to see whether anchor should be displayed
 		$current = (array) get_option( 'scroll_to_anchor' );
@@ -34,7 +32,7 @@ if ( ! function_exists( 'sta_anchor' ) ) {
 		if ( ! isset( $current['show'] ) || 'hidden' == $a['class'] ) {
 			$html .= 'class="sta-anchor '.$a['class'].'" aria-hidden="true">';
 		} else {
-			$html .= 'class="sta-anchor '.$a['class'].'">'.$current['label'].': '.$a['id'];
+			$html .= 'class="sta-anchor '.$a['class'].'">'.esc_attr( $current['label'] ).': '.$a['id'];
 		}
 
 		$html .= '</span>';

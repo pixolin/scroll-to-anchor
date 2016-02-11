@@ -26,7 +26,7 @@ You should have received a copy of the GNU General Public License
 along with Scroll to Anchor. If not, see https://www.gnu.org/licenses/gpl-2.0.html.
 
 Credits:
-(c) Caspar Hübinger, 2016 for used JavaScript, GPLv2
+(c) Caspar Hübinger, 2016 for JavaScript function in scroll-to-anchor.js, GPLv2
 Thank you for providing your code to the public.
 */
 
