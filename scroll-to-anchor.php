@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name:  Scroll to Anchor
-Version:      0.3
+Version:      0.3.1
 Plugin URI:   https://github.com/pixolin/Scroll-to-anchor
 Description:  Adds jQuery function to scroll smoothly to anchors in posts and pages.
 Author:       Bego Mario Garde
@@ -32,7 +32,8 @@ Thank you for providing your code to the public.
 
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
-define( 'PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+// retrieve plugin path
+$sta_plugin_path = plugin_dir_path( __FILE__ );
 
 //Localize
 add_action( 'plugins_loaded', 'sta_load_textdomain' );
@@ -43,12 +44,12 @@ if ( ! function_exists( 'sta_load_textdomain' ) ) {
 	}
 }
 
-require_once PLUGIN_DIR.'/includes/sta-enqueue-js.php'; // Enqueue JS
-require_once PLUGIN_DIR.'/includes/sta-shortcode.php'; // Add Shortcode
+require_once $sta_plugin_path .'/includes/sta-enqueue-js.php'; // Enqueue JS
+require_once $sta_plugin_path .'/includes/sta-shortcode.php'; // Add Shortcode
 
 if ( is_admin() ) {
-	require_once PLUGIN_DIR.'/settings/sta-settings.php'; // Plugin Settings
-	require_once PLUGIN_DIR.'/admin/sta-tinymce-button.php'; // TinyMCE Button
+	require_once $sta_plugin_path .'/settings/sta-settings.php'; // Plugin Settings
+	require_once $sta_plugin_path .'/admin/sta-tinymce-button.php'; // TinyMCE Button
 };
 
 register_activation_hook( __FILE__, 'sta_initial_options' );

@@ -40,6 +40,11 @@ None so far. Please feel free to use the plugin support forum if you have any qu
 
 ## Changelog ##
 
+### 0.3.1 ###
+Release date: February, 13th, 2016
+Enhancement: .pot-File for translation added.
+Bug-Fixes:   Some minor changes like removing unnecessary variables.
+
 ### 0.3 ###
 Initial Release: February 12th, 2016
 

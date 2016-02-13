@@ -4,12 +4,10 @@
  */
 
 // If uninstall is not called from WordPress, exit
-if (!defined('WP_UNINSTALL_PLUGIN')) {
-    exit();
+if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
+	exit();
 }
 
-$option_name = 'scroll-to-anchor';
-
-delete_option($option_name);
+delete_option( 'scroll-to-anchor' );
 
 // Thank you for using my plugin. <3

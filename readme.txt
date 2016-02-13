@@ -1,9 +1,11 @@
 === Scroll to Anchor ===
 Contributors: pixolin
 Tags: anchors, scrolling
-Stable tag: 0.3
 Requires at least: 4.0
 Tested up to: 4.4
+Stable tag: 0.3
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Adds smooth scrolling to anchors, that you can easily set in the visual editor.
 
@@ -42,6 +44,11 @@ None so far. Please feel free to use the plugin support forum if you have any qu
 3. Creating link to anchor
 
 == Changelog ==
+
+= 0.3.1 =
+Release date: February, 13th, 2016
+Enhancement: .pot-File for translation added.
+Bug-Fixes:   Some minor changes like removing unnecessary variables.
 
 = 0.3 =
 Release date: February 12th, 2016
