@@ -24,7 +24,7 @@ How do you want the anchor to be displayed? By default the anchor will be displa
 
 ## Installation ##
 
-You can install **Scroll to Anchor** automatically from the plugin directory, or by uploading the files manually to your server. After activating **Scroll to Anchor** check the settings at the bottom of the menu **Settings > Reading**.
+You can install **Scroll to Anchor** automatically from the plugin directory, or by uploading the files manually to your server. After activating **Scroll to Anchor** check the settings at the bottom of the WordPress menu **Settings > Reading**.
 
 For uninstall, just deactivate and delete the plugin. Remember to delete the shortcodes you may have added using the plugin.
 
@@ -39,6 +39,11 @@ None so far. Please feel free to use the plugin support forum if you have any qu
 3. Creating link to anchor
 
 ## Changelog ##
+
+### 0.3.2 ###
+Release date: March, 12th, 2016
+Enhancement: Menu plugins now shows link to settings section
+
 
 ### 0.3.1 ###
 Release date: February, 13th, 2016

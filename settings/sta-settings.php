@@ -8,6 +8,7 @@
  * 2. Settings Section and Fields in Settings > Reading
  * 3. Form Fields
  * 4. Validation
+ * 5. Show link to settings
  */
 
 /* ------------------------------------------------------------------------- *
@@ -18,11 +19,11 @@ add_action( 'admin_init', 'sta_settings_api_init' );
 
 if ( ! function_exists( 'sta_settings_api_init' ) ) {
 	function sta_settings_api_init() {
-		//New ettings Sction in page "reading"
+		//New settings section in page "reading"
 		add_settings_section(
 			$id = 'sta_section',
-			$title = __( 'Scroll to Anchor Settings', 'scroll-to-anchor' ),
-			$callback = false,
+			$title = '',
+			$callback = 'sta_settings_section',
 			$page = 'reading'
 		);
 
@@ -168,4 +169,19 @@ if ( ! function_exists( 'sta_sanitize' ) ) {
 
 		return $new_input;
 	}
+}
+
+/* ------------------------------------------------------------------------- *
+ * 5. Link to settings
+ * ------------------------------------------------------------------------- */
+
+add_filter( 'plugin_action_links', 'sta_plugin_action_links' );
+function sta_plugin_action_links( $links ) {
+	$links[] = '<a href="options-reading.php#sta_section">'. __( 'Settings', 'scroll-to-anchor' ) . '</a>';
+	return $links;
+}
+
+// Settings Section Callback to add an anchor for link from the plugins menu
+function sta_settings_section( $arg ) {
+	echo '<h2 id="' . $arg['id'] . '">' . __( 'Scroll to Anchor Settings', 'scroll-to-anchor' ) . '</h2>';
 }
