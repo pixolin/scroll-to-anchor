@@ -175,10 +175,13 @@ if ( ! function_exists( 'sta_sanitize' ) ) {
  * 5. Link to settings
  * ------------------------------------------------------------------------- */
 
-add_filter( 'plugin_action_links', 'sta_plugin_action_links' );
+add_filter( 'plugin_action_links_' . $sta_plugin_base, 'sta_plugin_action_links' );
 function sta_plugin_action_links( $links ) {
-	$links[] = '<a href="options-reading.php#sta_section">'. __( 'Settings', 'scroll-to-anchor' ) . '</a>';
-	return $links;
+	$mylinks = array(
+	'<a href="options-reading.php#sta_section">'. __( 'Settings', 'scroll-to-anchor' ) . '</a>'
+	);
+
+	return array_merge( $links, $mylinks );
 }
 
 // Settings Section Callback to add an anchor for link from the plugins menu

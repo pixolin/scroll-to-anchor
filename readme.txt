@@ -3,7 +3,7 @@ Contributors: pixolin
 Tags: anchors, scrolling
 Requires at least: 4.0
 Tested up to: 4.4
-Stable tag: 0.3
+Stable tag: 0.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -44,6 +44,10 @@ None so far. Please feel free to use the plugin support forum if you have any qu
 3. Creating link to anchor
 
 == Changelog ==
+
+= 0.3.3 =
+Release date: March, 14th, 2016
+Bug-Fix: Replaces hook used to show settings link
 
 = 0.3.2 =
 Release date: March, 12th, 2016

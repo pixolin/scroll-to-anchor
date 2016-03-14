@@ -40,6 +40,10 @@ None so far. Please feel free to use the plugin support forum if you have any qu
 
 ## Changelog ##
 
+### 0.3.3 ###
+Release date: March, 14th, 2016
+Bug-Fix: Replaces hook used to show settings link
+
 ### 0.3.2 ###
 Release date: March, 12th, 2016
 Enhancement: Menu plugins now shows link to settings section

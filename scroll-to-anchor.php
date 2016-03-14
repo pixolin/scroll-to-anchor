@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name:  Scroll to Anchor
-Version:      0.3.1
+Version:      0.3.3
 Plugin URI:   https://github.com/pixolin/Scroll-to-anchor
 Description:  Adds jQuery function to scroll smoothly to anchors in posts and pages.
 Author:       Bego Mario Garde
@@ -34,6 +34,9 @@ defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
 // retrieve plugin path
 $sta_plugin_path = plugin_dir_path( __FILE__ );
+
+// store plugin basename
+$sta_plugin_base = plugin_basename( __FILE__ );
 
 //Localize
 add_action( 'plugins_loaded', 'sta_load_textdomain' );
