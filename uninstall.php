@@ -8,6 +8,6 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 	exit();
 }
 
-delete_option( 'scroll-to-anchor' );
+delete_option( 'scroll_to_anchor' );
 
 // Thank you for using my plugin. <3

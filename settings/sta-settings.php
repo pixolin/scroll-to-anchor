@@ -27,6 +27,16 @@ if ( ! function_exists( 'sta_settings_api_init' ) ) {
 			$page = 'reading'
 		);
 
+		//Settings Field Scroll Speed
+		add_settings_field(
+			$id = 'sta_speed',
+			$title = __( 'Animation-Speed', 'scroll-to-anchor' ),
+			$callback = 'sta_settings_speed_function',
+			$page = 'reading',
+			$section = 'sta_section',
+			$args = array()
+		);
+
 		//Settings Field Distance
 		add_settings_field(
 			$id = 'sta_distance',
@@ -37,11 +47,11 @@ if ( ! function_exists( 'sta_settings_api_init' ) ) {
 			$args = array()
 		);
 
-		//Settings Field Scroll Speed
+		//Settings Show Anchor
 		add_settings_field(
-			$id = 'sta_speed',
-			$title = __( 'Animation-Speed', 'scroll-to-anchor' ),
-			$callback = 'sta_settings_speed_function',
+			$id = 'sta_show',
+			$title = __( 'Display anchor(s) in front end', 'scroll-to-anchor' ),
+			$callback = 'sta_settings_showanchor_function',
 			$page = 'reading',
 			$section = 'sta_section',
 			$args = array()
@@ -57,16 +67,6 @@ if ( ! function_exists( 'sta_settings_api_init' ) ) {
 			$args = array()
 		);
 
-		//Settings Show Anchor
-		add_settings_field(
-			$id = 'sta_show',
-			$title = __( 'Show anchor(s) in front end', 'scroll-to-anchor' ),
-			$callback = 'sta_settings_showanchor_function',
-			$page = 'reading',
-			$section = 'sta_section',
-			$args = array()
-		);
-
 		register_setting( 'reading', 'scroll_to_anchor', 'sta_sanitize' );
 	}
 }
@@ -74,19 +74,6 @@ if ( ! function_exists( 'sta_settings_api_init' ) ) {
 /* ------------------------------------------------------------------------- *
  * 2. Form Fields
  * ------------------------------------------------------------------------- */
-
-//Form Field DISTANCE
-if ( ! function_exists( 'sta_settings_distance_function' ) ) {
-	function sta_settings_distance_function() {
-		$current = (array) get_option( 'scroll_to_anchor' );
-
-		$html = __( 'Show anchor with an offset of…', 'scroll-to-anchor' ).'<br />';
-		$html .= '<input name="scroll_to_anchor[distance]" id="sta-distance" type="text" value="'.esc_attr( $current['distance'] ).'" size="5"/> ';
-		$html .= '<label for="sta-distance">'.__( 'Pixel', 'scroll-to-anchor' ).' (0&ndash;600 Pixel)</label>';
-
-		echo  $html;
-	}
-}
 
 //Form Field SPEED
 if ( ! function_exists( 'sta_settings_speed_function' ) ) {
@@ -100,7 +87,7 @@ if ( ! function_exists( 'sta_settings_speed_function' ) ) {
 			0    => __( 'disabled', 'scroll-to-anchor' ),
 		);
 
-		$html = __( 'Animation speed when scrolling to anchors', 'scroll-to-anchor' ).'<br />';
+		$html = '<p>'.__( 'Select the speed to scroll to anchors', 'scroll-to-anchor' ).'</p>';
 		$html .= '<select id="speed" name="scroll_to_anchor[speed]}">';
 
 		foreach ( $options as $value => $text ) {
@@ -114,15 +101,14 @@ if ( ! function_exists( 'sta_settings_speed_function' ) ) {
 	}
 }
 
-//form field for anchor label
-if ( ! function_exists( 'sta_settings_label_function' ) ) {
-	function sta_settings_label_function() {
+//Form Field DISTANCE
+if ( ! function_exists( 'sta_settings_distance_function' ) ) {
+	function sta_settings_distance_function() {
 		$current = (array) get_option( 'scroll_to_anchor' );
 
-		$html = __( 'By default anchors are labeled as <em>Anchor: foo</em>, <br />
-    but you can rename the label here.', 'scroll-to-anchor' ).'<br />';
-		$html .= '<label for="sta-label">'.__( 'Name:', 'scroll-to-anchor' ).'</label> ';
-		$html .= '<input name="scroll_to_anchor[label]" id="sta-label" type="text" value="'.esc_attr( $current['label'] ).'" /> ';
+		$html = '<p>'.__( 'Show anchor with an offset of…', 'scroll-to-anchor' ).'</p>';
+		$html .= '<input name="scroll_to_anchor[distance]" id="sta-distance" type="text" value="'.esc_attr( $current['distance'] ).'" size="5"/> ';
+		$html .= '<label for="sta-distance">'.__( 'Pixel', 'scroll-to-anchor' ).' (0&ndash;600 Pixel)</label>';
 
 		echo  $html;
 	}
@@ -133,8 +119,29 @@ if ( ! function_exists( 'sta_settings_showanchor_function' ) ) {
 	function sta_settings_showanchor_function() {
 		$current = (array) get_option( 'scroll_to_anchor' );
 
-		$html = '<input name="scroll_to_anchor[show]" id="sta-show" type="checkbox" value="1" '.checked( isset( $current['show'] ), 1, false ).'/>';
-		$html .= '<label for="sta-show">'.__( 'display anchor inline as <em>Anchor: foo</em>', 'scroll-to-anchor' ).'</label>';
+		$html = '<p style="max-width:36em;">' . __( 'Do you just want the scrolling animation, or do you also want to &hellip;', 'scroll-to-anchor' ).'</p>';
+		$html .= '<input name="scroll_to_anchor[show]" id="sta-show" type="checkbox" value="1" '.checked( isset( $current['show'] ), 1, false ).'/>';
+		$html .= '<label for="sta-show">';
+		$html .= __( '<strong>display</strong> the anchors in front end' , 'scroll-to-anchor' );
+		$html .= '</label>';
+
+		echo  $html;
+	}
+}
+
+//form field for anchor label
+if ( ! function_exists( 'sta_settings_label_function' ) ) {
+	function sta_settings_label_function() {
+		$current = (array) get_option( 'scroll_to_anchor' );
+		if ( $current['label'] ) {
+			$label = esc_attr( $current['label'] );
+		} else {
+			$label = __( 'Anchor', 'scroll-to-anchor' );
+		}
+
+		$html = '<p style="max-width:36em;">'. sprintf( __( 'If you chose above to display anchors in front end, they will be shown with a label <strong>%s</strong>:&nbsp;&hellip; by default, but you can <em>globally</em> change that <em>label</em> here.', 'scroll-to-anchor' ), $label ) .'</p>';
+		$html .= '<label for="sta-label">'.__( 'Label for anchors:', 'scroll-to-anchor' ).'</label> ';
+		$html .= '<input name="scroll_to_anchor[label]" id="sta-label" type="text" value="'.esc_attr( $current['label'] ).'" /> ';
 
 		echo  $html;
 	}
