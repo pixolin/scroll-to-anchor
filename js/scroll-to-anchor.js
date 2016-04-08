@@ -6,21 +6,23 @@
  * hash characters at the end of a URL.
  *
  * (c) Caspar Hübinger, 2016
+ * (c) Bego Mario Garde, 2016
  * Licensed under GPL2. See enclosed LICENSE.
  */
 
 jQuery(document).ready(function($) {
 
   $('a[href*="#"]')
-    .not('a[href="#"]') // Excemption #1: dummy hrefs
-    .not('a[href*="#respond"]') // Excemption #2: WordPress comment form
+    .not('a[href="#"]') // Exception #1: dummy hrefs
+    .not('a[href*="#respond"]') // Exception #2: WordPress comment form
+		.not('.woocommerce a[href*="#tab"]') // Exception #3: Woocommerce tabs
     .on('click', function(e) {
 
       //Split link into part before and after hash mark #
       var linktHref = this.href.split('#');
 
 
-      if (linktHref[1] === '') { // Excemption #3: orphaned # at end of URL
+      if (linktHref[1] === '') { // Exception #4: orphaned # at end of URL
         e.preventDefault();
         return false;
       }

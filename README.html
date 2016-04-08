@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+</head>
+<body>
+<h1 id="scroll-to-anchor">Scroll-to-anchor</h1>
+
+<h2 id="addanchorsanduseasmoothscrollinganimationforabetteruserexperience.">Add anchors and use a smooth scrolling animation for a better user experience.</h2>
+
+<figure>
+<img src="/assets/banner-1544x500.png" alt="Scroll-to-anchor" />
+<figcaption>Scroll-to-anchor</figcaption>
+</figure>
+
+<h2 id="description">Description</h2>
+
+<p>Do you write longer text in posts or pages and want to provide links to skip parts?</p>
+
+<p>Usually this is done by adding HTML anchors in the text editor as link targets. But not everyone feels happy writing HTML code, which also may be error-prone. After installing this plugin you can use the new anchor icon in your visual editor toolbar to place anchors.</p>
+
+<p>Click in your text where you want to place the anchor, then click on the anchor icon. A dialog box appears where you can provide a short name for your anchor (e.g. &#8220;summary&#8221;). Optionally you may also provide CSS class name to individually style the anchor. As a result, a shortcode will be placed into your text. This shortcode will render according to your settings and get replaced in the front end with the correct HTML.</p>
+
+<p>Next you can create a link to this anchor. Write some Text (e.g. &#8220;Skip to summary&#8221;), mark the text and use the default link icon in the editor toolbar. Instead of the complete URL it is sufficient to provide the previously created anchor name, preceded by a hash sign (e.g. &#8220;#summary&#8221;). That’s about it. If a visitors of your website now clicks on that link in the front end, they will see the web page scrolling smoothly to the defined anchor.</p>
+
+<h3 id="individualsettings">Individual Settings</h3>
+
+<p>This plugin provides some enhancement only, so it doesn&#8217;t come with yet another settings page but instead adds a settings section to the menu <strong>Settings &gt; Reading</strong>.</p>
+
+<p>Here you can select the speed of the scrolling animation or even disable the animation entirely.</p>
+
+<p>You can also set an <strong>offset</strong> for anchors, which comes handy if you e.g. use a fixed header.</p>
+
+<p>Some users just want the smooth scrolling effect, but don&#8217;t want any text to show up in their posts or pages. Therefore the plugin won&#8217;t display anything in the front end unless you choose differently in the settings. Those who want to show the anchors as text, may choose their own label for anchors, e.g. &#8220;footnote&#8221; or &#8220;section&#8221; (followed by the name you chose for that particular anchor).</p>
+
+<p>I appreciate all feedback.</p>
+
+<h3 id="installation">Installation</h3>
+
+<p>You can install <strong>Scroll to Anchor</strong> automatically from the plugin directory, or by uploading the files manually to your server. After activating <strong>Scroll to Anchor</strong> you&#8217;ll be forwarded to the settings section at the bottom of the menu <strong>Settings &gt; Reading</strong>.</p>
+
+<p>To uninstall, just deactivate and delete the plugin. Remember to remove the shortcodes you may have added using the plugin.</p>
+
+<h3 id="frequentlyaskedquestions">Frequently Asked Questions</h3>
+
+<p>Q: Why don&#8217;t I see any settings page?
+There is no need to add yet another settings page. You&#8217;ll find the plugin settings at <strong>Settings &gt; Reading</strong>.</p>
+
+<p>Q: Are there any restrictions for anchor names?
+The plugin skips anchor links starting with <code>#respond</code> (usually comments) and on pages with a body-class <code>.woocommerce</code> anchors starting with <code>#tab</code> to avoid conflicts with WooCommerce&#8217;s product tabs.</p>
+
+<h3 id="screenshots">Screenshots</h3>
+
+<p><img src="https://github.com/pixolin/scroll-to-anchor/blob/master/assets/screenshot-1.png" alt="Settings &gt; Reading" />
+1. Settings &gt; Reading
+<img src="https://github.com/pixolin/scroll-to-anchor/blob/master/assets/screenshot-2.png" alt="Adding a new anchor" />
+2. Adding a new anchor
+<img src="https://github.com/pixolin/scroll-to-anchor/blob/master/assets/screenshot-2.png" alt="Creating link to anchor" />
+3. Creating a link to anchor</p>
+
+<h3 id="changelog">Changelog</h3>
+
+<h3 id="0.3.5">0.3.5</h3>
+
+<p>Release date: April 8, 2016
+Bug-Fix: added exception for Woocommerce Tabs
+(thank you for feedback by francismacomber)</p>
+
+<h3 id="0.3.4">0.3.4</h3>
+
+<p>Release date: March 26, 2016
+Bug-Fix: Settings weren&#8217;t deleted from the database due to a wrong variable name.
+Enhancement: Changes initial setting after installation to hide the anchor in the front end by default. Settings menu rearranged and with easier to understand descriptions.</p>
+
+<h3 id="0.3.3">0.3.3</h3>
+
+<p>Release date: March 14, 2016
+Bug-Fix: Replaces hook used to show settings link</p>
+
+<h3 id="0.3.2">0.3.2</h3>
+
+<p>Release date: March 12, 2016
+Enhancement: Menu plugins now shows link to settings section</p>
+
+<h3 id="0.3.1">0.3.1</h3>
+
+<p>Release date: February 13, 2016
+Enhancement: .pot-File for translation and German formal translation added.
+Bug-Fixes: Some minor changes like removing unnecessary variables.</p>
+
+<h3 id="0.3">0.3</h3>
+
+<p>Release date: February 12, 2016
+Initial release.</p>
+
+<hr />
+
+<p>The banner for the WordPress Plugin Repository is based on the image <a href="http://www.photolib.noaa.gov/htmls/theb0139.htm">&#8220;Coast and Geodetic Survey Ship FATHOMER. In service 1905&#8211;1941.&#8221;</a> published in <strong>Public Domain</strong> by National Oceanic and Atmospheric Administration/Department of Commerce, USA. Photograph by C&amp;GS Season&#8217;s Report Miller, 1911.</p>
+
+<p>Text in the background is from the novel <em>Moby Dick</em> by Herman Melville, <strong>Public Domain</strong>.</p>
+
+<p>And just in case you wonder about the maritime elements – this plugin is about <em>anchors</em>. :)</p>
+
+</body>
+</html>
