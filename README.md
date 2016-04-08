@@ -45,7 +45,7 @@ The plugin skips anchor links starting with `#respond` (usually comments) and on
 1. Settings > Reading
 ![Adding a new anchor](https://github.com/pixolin/scroll-to-anchor/blob/master/assets/screenshot-2.png)
 2. Adding a new anchor
-![Creating link to anchor](https://github.com/pixolin/scroll-to-anchor/blob/master/assets/screenshot-2.png)
+![Creating link to anchor](https://github.com/pixolin/scroll-to-anchor/blob/master/assets/screenshot-3.png)
 3. Creating a link to anchor
 
 ### Changelog ###
