@@ -21,10 +21,8 @@ jQuery(document).ready(function($) {
       //Split link into part before and after hash mark #
       var linktHref = this.href.split('#');
 
-
       if (linktHref[1] === '') { // Exception #4: orphaned # at end of URL
-        e.preventDefault();
-        return false;
+        return;
       }
 
       var currentUrlRoot = window.location.href.split('#')[0],
@@ -33,20 +31,17 @@ jQuery(document).ready(function($) {
       currentUrlRoot = currentUrlRoot.replace(/\/$/, '');
       linktHref[0] = linktHref[0].replace(/\/$/, '');
 
-      // Animate for targets on the same page.
-      if (linktHref[0] === currentUrlRoot) {
-        $('html, body')
-          .animate({
-            scrollTop: scrollToAnchor.offset().top - sta_settings.distance
-          }, parseInt(sta_settings.speed, 10));
-
-        e.preventDefault();
-        return false;
-      } else {
-        // For targets on other pages, just go to URL.
-        window.location.href = this.href;
+      // Do not animate for targets on another page
+      if ( linktHref[0] !== currentUrlRoot || ! scrollToAnchor.length ) {
+        return;
       }
 
+      $('html, body')
+        .animate({
+          scrollTop: scrollToAnchor.offset().top - sta_settings.distance
+        }, parseInt(sta_settings.speed, 10));
+
+      e.preventDefault();
       return false;
     });
 });
