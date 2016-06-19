@@ -34,7 +34,7 @@ jQuery(document).ready(function($) {
       linktHref[0] = linktHref[0].replace(/\/$/, '');
 
       // Animate for targets on the same page.
-      if (linktHref[0] === currentUrlRoot) {
+      if (linktHref[0] === currentUrlRoot && scrollToAnchor.length ) {
         $('html, body')
           .animate({
             scrollTop: scrollToAnchor.offset().top - sta_settings.distance
