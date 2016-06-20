@@ -10,36 +10,35 @@
  * Licensed under GPL2. See enclosed LICENSE.
  */
 
-jQuery(document).ready(function ($) {
-  $('a[href*="#"]')
-    .not('a[href="#"]') // Exception #1: dummy hrefs
-    .not('a[href*="#respond"]') // Exception #2: WordPress comment form
+jQuery(document).ready(function($) {
+	$('a[href*="#"]')
+		.not('a[href="#"]') // Exception #1: dummy hrefs
+		.not('a[href*="#respond"]') // Exception #2: WordPress comment form
 		.not('.woocommerce a[href*="#tab"]') // Exception #3: Woocommerce tabs
-    .on('click', function (e) {
-      //Split link into part before and after hash mark #
-      var linktHref = this.href.split('#')
+		.on('click', function (e) {
+			//Split link into part before and after hash mark #
+			var linktHref = this.href.split('#');
 
-      if (linktHref[1] === '') { // Exception #4: orphaned # at end of URL
-        return
-      }
+			if (linktHref[1] === '') { // Exception #4: orphaned # at end of URL
+				return;
+			}
 
-      var currentUrlRoot = window.location.href.split('#')[0],
-        scrollToAnchor = $('#' + linktHref[1])
+			var currentUrlRoot = window.location.href.split('#')[0],
+				scrollToAnchor = $('#' + linktHref[1]);
 
-      currentUrlRoot = currentUrlRoot.replace(/\/$/, '')
-      linktHref[0] = linktHref[0].replace(/\/$/, '')
+			currentUrlRoot = currentUrlRoot.replace(/\/$/, '');
+			linktHref[0] = linktHref[0].replace(/\/$/, '');
 
-      // Do not animate for targets on another page
-      if (linktHref[0] !== currentUrlRoot || !scrollToAnchor.length) {
-        return
-      }
+			// Do not animate for targets on another page
+			if (linktHref[0] !== currentUrlRoot || !scrollToAnchor.length) {
+				return;
+			}
 
-      $('html, body')
-        .animate({
-          scrollTop: scrollToAnchor.offset().top - sta_settings.distance
-        }, parseInt(sta_settings.speed, 10))
+			$('html, body').animate({
+				scrollTop: scrollToAnchor.offset().top - sta_settings.distance
+			}, parseInt(sta_settings.speed, 10));
 
-      e.preventDefault()
-      return false
-    })
-})
+			e.preventDefault();
+			return false;
+		});
+});

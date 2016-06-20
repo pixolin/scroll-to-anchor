@@ -29,7 +29,7 @@ echo "$MAINFILE version: $NEWVERSION2"
 
 if [ "$NEWVERSION1" != "$NEWVERSION2" ]
 	then echo "Version in readme.txt & $MAINFILE don't match. Exiting."
-	# exit 1
+#	exit 1
 fi
 
 echo "Versions match in readme.txt and $MAINFILE. Let's proceed..."
@@ -88,11 +88,13 @@ cd $SVNPATH/trunk/
 
 printf "Ignoring GitHub specific files and deployment script..."
 svn propset --quiet svn:ignore "deploy.sh
-README.md
-config.codekit
+.editorconfig
 .git
 .gitignore
-workingfiles" .
+.jshintrc
+config.codekit
+workingfiles
+README.md" .
 echo "Done."
 
 printf "Adding new files..."

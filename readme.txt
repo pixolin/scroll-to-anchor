@@ -3,7 +3,7 @@ Contributors: pixolin
 Tags: anchors, scrolling
 Requires at least: 4.0
 Tested up to: 4.5
-Stable tag: 0.3.6
+Stable tag: 0.3.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -52,6 +52,9 @@ The plugin skips anchor links starting with <code>#respond</code> (usually comme
 3. Creating link to anchor
 
 == Changelog ==
+= 0.3.7 =
+Customized JavaScript according to [WordPress Coding Standards](https://make.wordpress.org/core/handbook/best-practices/coding-standards/javascript/)
+
 = 0.3.6 =
 Improvements in the JavaScript. Special thanks to Felix Arntz (flixos90).
 

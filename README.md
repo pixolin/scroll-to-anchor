@@ -50,6 +50,9 @@ The plugin skips anchor links starting with `#respond` (usually comments) and on
 
 ### Changelog ###
 
+### 0.3.7 ###
+Customized JavaScript according to [WordPress Coding Standards](https://make.wordpress.org/core/handbook/best-practices/coding-standards/javascript/)
+
 ### 0.3.6 ###
 Improvements in the JavaScript. Special thanks to Felix Arntz (flixos90).
 
