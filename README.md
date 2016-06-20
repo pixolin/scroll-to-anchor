@@ -50,6 +50,9 @@ The plugin skips anchor links starting with `#respond` (usually comments) and on
 
 ### Changelog ###
 
+### 0.3.6 ###
+Improvements in the JavaScript. Special thanks to Felix Arntz (flixos90).
+
 ### 0.3.5 ##
 Release date: April 8, 2016
 Bug-Fix: added exception for Woocommerce Tabs
