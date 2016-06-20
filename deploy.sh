@@ -29,7 +29,7 @@ echo "$MAINFILE version: $NEWVERSION2"
 
 if [ "$NEWVERSION1" != "$NEWVERSION2" ]
 	then echo "Version in readme.txt & $MAINFILE don't match. Exiting."
-	exit 1
+	# exit 1
 fi
 
 echo "Versions match in readme.txt and $MAINFILE. Let's proceed..."
@@ -39,37 +39,30 @@ if git show-ref --quiet --tags --verify -- "refs/tags/$NEWVERSION1"
 		echo "Version $NEWVERSION1 already exists as git tag. Exiting."
 		exit 1
 	else
-		echo "Git version does not exist. Let's proceed..."
-		echo
+		printf "Tagging new Git version..."
+		git tag -a "$NEWVERSION1" -m "tagged version $NEWVERSION1"
+		echo "Done."
+
+		printf "Pushing new Git tag..."
+		git push --quiet --tags
+		echo "Done."
 fi
 
 cd $GITPATH
 
-echo -n "Saving previous Git tag version..."
-PREVTAG=`git describe --tags \`git rev-list --tags --max-count=1\``
-echo "Done."
-
-echo -n "Tagging new Git version..."
-git tag -a "$NEWVERSION1" -m "Tagging version $NEWVERSION1"
-echo "Done."
-
-echo -n "Pushing new Git tag..."
-git push --quiet --tags
-echo "Done."
-
-echo -n "Creating local copy of SVN repo..."
+printf "Creating local copy of SVN repo..."
 svn checkout --quiet $SVNURL/trunk $SVNPATH/trunk
 echo "Done."
 
-echo -n "Exporting the HEAD of master from Git to the trunk of SVN..."
+printf "Exporting the HEAD of master from Git to the trunk of SVN..."
 git checkout-index --quiet --all --force --prefix=$SVNPATH/trunk/
 echo "Done."
 
-echo -n "Preparing commit message..."
-git log --pretty=oneline --abbrev-commit $PREVTAG..$NEWVERSION1 > /tmp/wppdcommitmsg.tmp
+printf "Preparing commit message..."
+echo "updated version to $NEWVERSION1" > /tmp/wppdcommitmsg.tmp
 echo "Done."
 
-echo -n "Preparing assets-wp-repo..."
+printf "Preparing assets-wp-repo..."
 if [ -d $SVNPATH/trunk/assets-wp-repo ]
 	then
 		svn checkout --quiet $SVNURL/assets $SVNPATH/assets > /dev/null 2>&1
@@ -82,7 +75,7 @@ if [ -d $SVNPATH/trunk/assets-wp-repo ]
 			then
 				svn stat | grep "^?" | awk '{print $2}' | xargs svn add --quiet # Add new assets
 				echo -en "Committing new assets..."
-				svn commit --quiet --username=$SVNUSER -m "Updated assets"
+				svn commit --quiet -m "updated assets"
 				echo "Done."
 			else
 				echo "Unchanged."
@@ -93,7 +86,7 @@ fi
 
 cd $SVNPATH/trunk/
 
-echo -n "Ignoring GitHub specific files and deployment script..."
+printf "Ignoring GitHub specific files and deployment script..."
 svn propset --quiet svn:ignore "deploy.sh
 README.md
 config.codekit
@@ -102,32 +95,32 @@ config.codekit
 workingfiles" .
 echo "Done."
 
-echo -n "Adding new files..."
+printf "Adding new files..."
 svn stat | grep "^?" | awk '{print $2}' | xargs svn add --quiet
 echo "Done."
 
-echo -n "Removing old files..."
+printf "Removing old files..."
 svn stat | grep "^\!" | awk '{print $2}' | xargs svn remove --quiet
 echo "Done."
 
-echo -n "Enter a commit message for this new SVN version..."
+printf "Enter a commit message for this new SVN version..."
 $DEFAULT_EDITOR /tmp/wppdcommitmsg.tmp
 COMMITMSG=`cat /tmp/wppdcommitmsg.tmp`
 rm /tmp/wppdcommitmsg.tmp
 echo "Done."
 
-echo -n "Committing new SVN version..."
+printf "Committing new SVN version..."
 svn commit --quiet --username=$SVNUSER -m "$COMMITMSG"
 echo "Done."
 
-echo -n "Tagging and committing new SVN tag..."
+printf "Tagging and committing new SVN tag..."
 svn copy $SVNURL/trunk $SVNURL/tags/$NEWVERSION1 --quiet --username=$SVNUSER -m "Tagging version $NEWVERSION1"
 echo "Done."
 
-echo -n "Removing temporary directory $SVNPATH..."
+printf "Removing temporary directory $SVNPATH..."
 rm -rf $SVNPATH/
 echo "Done."
 
 echo
-echo "The plugin version $NEWVERSION1 is successfully deployed."
+echo "Plugin $PLUGINSLUG version $NEWVERSION1 has been successfully deployed."
 echo
