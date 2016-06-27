@@ -67,6 +67,16 @@ if ( ! function_exists( 'sta_settings_api_init' ) ) {
 			$args = array()
 		);
 
+		//Settings Label
+		add_settings_field(
+			$id = 'sta_exceptions',
+			$title = __( 'Exclude Sections', 'scroll-to-anchor' ),
+			$callback = 'sta_settings_exceptions_function',
+			$page = 'reading',
+			$section = 'sta_section',
+			$args = array()
+		);
+
 		register_setting( 'reading', 'scroll_to_anchor', 'sta_sanitize' );
 	}
 }
@@ -147,6 +157,20 @@ if ( ! function_exists( 'sta_settings_label_function' ) ) {
 	}
 }
 
+// exceptions
+if ( ! function_exists( 'sta_settings_exceptions_function' ) ) {
+	function sta_settings_exceptions_function() {
+		$current = (array) get_option( 'scroll_to_anchor' );
+
+		$html = '<p style="max-width:36em;">'. __( 'Some themes and plugins use anchors to provide other animations, e.g. in accordions or tabs. <strong>To avoid conflicts</strong> between these animations and plugin Scroll to Anchor, you can exclude these sections by specifying their CSS classes (e.g. <code>.accordion</code>) or ids (e.g. <code>#accordion</code>) in the field below. For more than one CSS class, please use commas as separator (e.g. <code>.one, .two, #three</code>).', 'scroll-to-anchor' ) . '</p>';
+		$html .= '<p style="max-width:36em;">'. __( 'If you have no idea, what this is good for, just leave the field empty.', 'scroll-to-anchor' ).'</p>';
+		$html .= '<label for="sta-exceptions">'.__( 'Exclude these CSS classes:', 'scroll-to-anchor' ).'</label> ';
+		$html .= '<input name="scroll_to_anchor[exceptions]" id="sta-exceptions" type="text" value="'.esc_attr( $current['exceptions'] ).'" /> ';
+
+		echo  $html;
+	}
+}
+
 /* ------------------------------------------------------------------------- *
  * 4. Validation and Sanitization
  * ------------------------------------------------------------------------- */
@@ -158,7 +182,7 @@ if ( ! function_exists( 'sta_sanitize' ) ) {
 
 		// Loop through the input and sanitize each of the values
 		foreach ( $input as $key => $val ) {
-			if ( 'label' === $key ) {
+			if ( 'label' === $key || 'exceptions' === $key ) {
 				$new_input[ $key ] = sanitize_text_field( $val );
 			} else {
 				$new_input[ $key ] = absint( $val );
@@ -182,7 +206,7 @@ if ( ! function_exists( 'sta_sanitize' ) ) {
  * 5. Link to settings
  * ------------------------------------------------------------------------- */
 
-add_filter( 'plugin_action_links_' . $sta_plugin_base, 'sta_plugin_action_links' );
+add_filter( 'plugin_action_links_' . STA_BASE , 'sta_plugin_action_links' );
 function sta_plugin_action_links( $links ) {
 	$mylinks = array(
 	'<a href="options-reading.php#sta_section">'. __( 'Settings', 'scroll-to-anchor' ) . '</a>'

@@ -11,15 +11,26 @@
  */
 
 jQuery(document).ready(function($) {
+	var exceptions = sta_settings.exceptions.split(","),
+		exceptionclass = '.accordion a[href*="#"]';
+
+	// check if any more classes need to be excluded
+	if( exceptions != "" ) {
+		for (var i = 0; i < exceptions.length; i++) {
+			exceptionclass += ', ' + exceptions[i] + ' a[href*="#"]';
+		}
+	}
+
 	$('a[href*="#"]')
 		.not('a[href="#"]') // Exception #1: dummy hrefs
 		.not('a[href*="#respond"]') // Exception #2: WordPress comment form
 		.not('.woocommerce a[href*="#tab"]') // Exception #3: Woocommerce tabs
+		.not(exceptionclass) // Even more exceptions, when set by the user
 		.on('click', function (e) {
 			//Split link into part before and after hash mark #
 			var linktHref = this.href.split('#');
 
-			if (linktHref[1] === '') { // Exception #4: orphaned # at end of URL
+			if (linktHref[1] === '') { // Exception: orphaned # at end of URL
 				return;
 			}
 

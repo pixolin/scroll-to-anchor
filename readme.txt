@@ -52,6 +52,9 @@ The plugin skips anchor links starting with <code>#respond</code> (usually comme
 3. Creating link to anchor
 
 == Changelog ==
+= 0.4.0 =
+Enhancement: Adds settings field to exclude CSS classes and avoid conflitcs with animations by third party themes and plugins, e.g. for accordions or tabs. Bootstrap's CSS class .accordion is excluded by default now.
+
 = 0.3.7 =
 Customized JavaScript according to [WordPress Coding Standards](https://make.wordpress.org/core/handbook/best-practices/coding-standards/javascript/)
 
