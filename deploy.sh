@@ -92,6 +92,7 @@ svn propset --quiet svn:ignore "deploy.sh
 .git
 .gitignore
 .jshintrc
+.keep
 config.codekit
 workingfiles
 README.md" .
