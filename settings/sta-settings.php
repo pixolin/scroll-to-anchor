@@ -161,11 +161,16 @@ if ( ! function_exists( 'sta_settings_label_function' ) ) {
 if ( ! function_exists( 'sta_settings_exceptions_function' ) ) {
 	function sta_settings_exceptions_function() {
 		$current = (array) get_option( 'scroll_to_anchor' );
+		if ( isset( $current['exceptions'] ) ) {
+			$exceptions = esc_attr( $current['exceptions'] );
+		} else {
+			$exceptions = '';
+		}
 
 		$html = '<p style="max-width:36em;">'. __( 'Some themes and plugins use anchors to provide other animations, e.g. in accordions or tabs. <strong>To avoid conflicts</strong> between these animations and plugin Scroll to Anchor, you can exclude these sections by specifying their CSS classes (e.g. <code>.accordion</code>) or ids (e.g. <code>#accordion</code>) in the field below. For more than one CSS class, please use commas as separator (e.g. <code>.one, .two, #three</code>).', 'scroll-to-anchor' ) . '</p>';
 		$html .= '<p style="max-width:36em;">'. __( 'If you have no idea, what this is good for, just leave the field empty.', 'scroll-to-anchor' ).'</p>';
 		$html .= '<label for="sta-exceptions">'.__( 'Exclude these CSS classes:', 'scroll-to-anchor' ).'</label> ';
-		$html .= '<input name="scroll_to_anchor[exceptions]" id="sta-exceptions" type="text" value="'.esc_attr( $current['exceptions'] ).'" /> ';
+		$html .= '<input name="scroll_to_anchor[exceptions]" id="sta-exceptions" type="text" value="'. $exceptions .'" /> ';
 
 		echo  $html;
 	}

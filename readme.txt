@@ -2,8 +2,8 @@
 Contributors: pixolin
 Tags: anchors, scrolling
 Requires at least: 4.0
-Tested up to: 4.5.3
-Stable tag: 0.4.0
+Tested up to: 4.6
+Stable tag: 0.4.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -50,6 +50,9 @@ The plugin is disabled for anchors, if
 3. Creating link to anchor
 
 == Changelog ==
+= 0.4.1 =
+Fix: error handling when variable $current['exceptions'] is empty.
+
 = 0.4.0 =
 Enhancement: Adds settings field to exclude CSS classes and avoid conflitcs with animations by third party themes and plugins, e.g. for accordions or tabs. Bootstrap's CSS class .accordion is excluded by default now.
 

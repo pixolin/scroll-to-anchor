@@ -32,7 +32,12 @@ if ( ! function_exists( 'sta_enqueue_js' ) ) {
 
 		$speed = absint( $current['speed'] );
 		$distance = absint( $current['distance'] );
-		$exceptions = esc_attr( $current['exceptions'] );
+
+		if ( isset( $current['exceptions'] ) ) {
+			$exceptions = esc_attr( $current['exceptions'] );
+		} else {
+			$exceptions = '';
+		}
 
 		//pass values to JavaScript
 		$sta_settings = array(

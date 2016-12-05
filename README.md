@@ -47,6 +47,9 @@ The plugin is disabled for anchors, if
 3. Creating a link to anchor
 
 ### Changelog ###
+#### 0.4.1 ####
+Fix: error handling when variable $current['exceptions'] is empty.
+
 #### 0.4.0 ####
 Enhancement: Adds settings field to exclude CSS classes and avoid conflitcs with animations by third party themes and plugins, e.g. for accordions or tabs. Bootstrap's CSS class .accordion is excluded by default now.
 
