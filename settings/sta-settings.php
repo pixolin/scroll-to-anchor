@@ -98,7 +98,7 @@ if ( ! function_exists( 'sta_settings_speed_function' ) ) {
 		);
 
 		$html = '<p>'.__( 'Select the speed to scroll to anchors', 'scroll-to-anchor' ).'</p>';
-		$html .= '<select id="speed" name="scroll_to_anchor[speed]}">';
+		$html .= '<select id="speed" name="scroll_to_anchor[speed]">';
 
 		foreach ( $options as $value => $text ) {
 			$html .= '<option value="'.$value.'"';
