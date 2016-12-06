@@ -2,8 +2,8 @@
 Contributors: pixolin
 Tags: anchors, scrolling
 Requires at least: 4.0
-Tested up to: 4.6
-Stable tag: 0.4.1
+Tested up to: 4.7
+Stable tag: 0.4.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -50,6 +50,10 @@ The plugin is disabled for anchors, if
 3. Creating link to anchor
 
 == Changelog ==
+
+= 0.4.2 =
+Fix: Code Bug, optimizes SVG file. Thanks to Sergej Müller.
+
 = 0.4.1 =
 Fix: error handling when variable $current['exceptions'] is empty.
 

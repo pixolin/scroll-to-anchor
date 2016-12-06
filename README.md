@@ -47,6 +47,10 @@ The plugin is disabled for anchors, if
 3. Creating a link to anchor
 
 ### Changelog ###
+
+#### 0.4.2 ####
+Fix: Code Bug, optimizes SVG file. Thanks to Sergej Müller.
+
 #### 0.4.1 ####
 Fix: error handling when variable $current['exceptions'] is empty.
 
