@@ -4,7 +4,7 @@
 PLUGINSLUG="scroll-to-anchor"
 CURRENTDIR=`pwd`
 MAINFILE="scroll-to-anchor.php" # This should be the name of your main php file in the WordPress plugin
-DEFAULT_EDITOR="/usr/bin/nano"
+DEFAULT_EDITOR="vim"
 
 # git config
 GITPATH="$CURRENTDIR/" # this file should be in the base of your git repository
@@ -91,7 +91,6 @@ svn propset --quiet svn:ignore "deploy.sh
 .editorconfig
 .git
 .gitignore
-.jshintrc
 .keep
 config.codekit
 workingfiles
