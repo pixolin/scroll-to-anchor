@@ -1,3 +1,5 @@
 # General CodeKit files to ignore
 config.codekit
 .codekit-cache
+/.config.codekit3
+/.phpintel
