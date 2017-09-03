@@ -22,7 +22,7 @@ if ( ! function_exists( 'sta_anchor' ) ) {
 
 		$a = shortcode_atts( $pairs, $atts );
 
-		$sta_anchorname = strtolower( str_replace( ' ', '-', $a[ id ] ) );
+		$sta_anchorname = strtolower( str_replace( ' ', '-', $a['id'] ) );
 
 		//fetch option to see whether anchor should be displayed
 		$current = (array) get_option( 'scroll_to_anchor' );
