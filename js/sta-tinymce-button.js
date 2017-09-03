@@ -28,19 +28,20 @@
 									editor.windowManager.alert('Please provide an anchor name!', function(){});
 								} else {
 									editor.windowManager.close();
+
+									var content = '[sta_anchor';
+									// add some warning if field is empty
+									content += ' id="' + e.data.name + '"';
+									if (e.data.cssclass) {
+										content += ' class="' + e.data.cssclass + '"';
+									}
+									if( editorselection ) {
+										content += ']' + editorselection + '[/sta_anchor]';
+									} else {
+										content += ' /]'
+									}
+									editor.insertContent(content);
 								}
-								var content = '[sta_anchor';
-								// add some warning if field is empty
-								content += ' id="' + e.data.name + '"';
-								if (e.data.cssclass) {
-									content += ' class="' + e.data.cssclass + '"';
-								}
-								if( editorselection ) {
-									content += ']' + editorselection + '[/sta_anchor]';
-								} else {
-									content += ' /]'
-								}
-								editor.insertContent(content);
 							} //onsubmit
 					}); // editor.windowManager
 				} // function
