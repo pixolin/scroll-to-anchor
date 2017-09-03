@@ -29,9 +29,17 @@
 								} else {
 									editor.windowManager.close();
 
+									// anchors may not contain spaces
+									sanitizedname = e.data.name.split(' ').join('-').toLowerCase();
+
+									// collect output to insert shortcode
 									var content = '[sta_anchor';
 									// add some warning if field is empty
-									content += ' id="' + e.data.name + '"';
+									content += ' id="' + sanitizedname + '"';
+									// in case anchor contained spaces, we store that extra
+									if( sanitizedname != e.data.name ) {
+										content += ' unsan="' + e.data.name + '"';
+									}
 									if (e.data.cssclass) {
 										content += ' class="' + e.data.cssclass + '"';
 									}
@@ -41,6 +49,10 @@
 										content += ' /]'
 									}
 									editor.insertContent(content);
+
+									if( sanitizedname != e.data.name ) {
+										editor.windowManager.alert("Anchor-ID has been changed to #"+sanitizedname).focus;
+									}
 								}
 							} //onsubmit
 					}); // editor.windowManager

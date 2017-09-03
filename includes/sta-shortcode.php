@@ -17,6 +17,7 @@ if ( ! function_exists( 'sta_anchor' ) ) {
 		//Shortcode Attributes
 		$pairs = array(
 			'id' => '',
+			'unsan' => '',
 			'class' => '',
 		);
 
@@ -34,7 +35,13 @@ if ( ! function_exists( 'sta_anchor' ) ) {
 		if ( ! isset( $current['show'] ) || 'hidden' == $a['class'] ) {
 			$html .= 'class="sta-anchor ' . $a['class'] . '" aria-hidden="true">';
 		} else {
-			$html .= 'class="sta-anchor ' . $a['class'] . '">' . esc_attr( $current['label'] ) . ': ' . $a['id'] . '&nbsp';
+			$html .= 'class="sta-anchor ' . $a['class'] . '">' . esc_attr( $current['label'] ) . ': ';
+			if ( $a['unsan'] ) {
+				$html .= $a['unsan'];
+			} else {
+				$html .= $a['id'];
+			}
+			$html .= '&nbsp';
 		}
 
 		$html .= $content . '</span>';
