@@ -50,6 +50,13 @@ The plugin is disabled for anchors, if
 3. Creating link to anchor
 
 == Changelog ==
+= 0.4.3 =
+Fix:
+* TinyMCE-Modal now shows warning if anchor name wasn't set (field left empty)
+* Using anchor names with spaces now doesn't cause errors in the browser.
+For example let's assume you add an acnhor with the name "summary chapter one". Depending on your settings, the anchor will be shown as "Anchor: Summary Chapter One". while in the link the spaces will be replaced by hyphens `<span id="summary-chapter-one" class="sta-anchor " aria-hidden="true"></span>`. Make sure, you use hyphens in the target-name of your links! (special thanks to Guido van der Leest)
+* Anchors may now encapsule content. However, if you want to use both, enclosing and not enclosing shortcodes _and_ updated from a previous version, you need to add closing slashes to existing, not enclosing  anchors (e.g. `[sta_anchor id="top" /]`).
+
 
 = 0.4.2 =
 Fix: Code Bug, optimizes SVG file. Thanks to Sergej Müller.
