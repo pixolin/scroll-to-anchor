@@ -49,6 +49,14 @@ jQuery(document).ready(function($) {
 				scrollTop: scrollToAnchor.offset().top - sta_settings.distance
 			}, parseInt(sta_settings.speed, 10));
 
+			scrollToAnchor.focus(); // Setting focus
+			if (scrollToAnchor.is(":focus")){ // Checking if the target was focused
+				return false;
+			} else {
+				scrollToAnchor.attr('tabindex','-1'); // Adding tabindex for elements not focusable
+				scrollToAnchor.focus(); // Setting focus
+			};
+
 			e.preventDefault();
 			return false;
 		});

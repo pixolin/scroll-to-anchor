@@ -92,7 +92,7 @@ svn propset --quiet svn:ignore "deploy.sh
 .git
 .gitignore
 .keep
-config.codekit
+.config.codekit3
 workingfiles
 README.md" .
 echo "Done."

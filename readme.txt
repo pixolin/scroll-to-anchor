@@ -25,7 +25,8 @@ A couple of other settings provide just as much flexibility as you may need: If 
 
 Some users reported conflicts with other plugins, which (ab-)use anchor tags for various reasons. To avoid issues, this plugin already excludes Woocommerce Tabs and Bootstrap Accordions, but you _could_ still run into issues with themes or plugins. To deal with this, you can add one or more CSS class names for sections, in which this plugin should be disabled. Although this is a little more complicated than I hoped for, it seems to be the best workaround. I'm happy to hear your thoughts, how this might even be improved in the future.
 
-I made this plugin because I love WordPress. Period. I don't ask for donations, no upsell, no sketch of the team. **But I would love to get your feedback to learn more.**
+I made this plugin because I love WordPress. Period. I won't ask for donations, no upsell, no sketch of the team.
+**But I love to get your feedback to learn more.**
 
 == Installation ==
 
@@ -55,13 +56,13 @@ As links may not contain spaces, your anchor name will be sanitized and spaces r
 3. Creating link to anchor
 
 == Changelog ==
-= 0.4.3 =
-Fix:
-* TinyMCE-Modal now shows warning if anchor name wasn't set (field left empty)
-* Using anchor names with spaces now doesn't cause errors in the browser.
-For example let's assume you add an acnhor with the name "summary chapter one". Depending on your settings, the anchor will be shown as "Anchor: Summary Chapter One", while spaces will be replaced by hyphens for the anchor ID: `<span id="summary-chapter-one" class="sta-anchor " aria-hidden="true"></span>`. Make sure, you use hyphens in the target-name of your links! (special thanks to Guido van der Leest)
-* Anchors may now encapsule content. However, if you want to use both, enclosing and not enclosing shortcodes _and_ updated from a previous version, you need to add closing slashes to existing, not enclosing  anchors (e.g. `[sta_anchor id="top" /]`).
 
+= 0.4.3 =
+Enhancement: TinyMCE modals now can be localized.
+Fix:
+* Anchor names now may contain spaces, uppper-/lowercase letters and even German umlauts. If you e.g. add an anchor "Großes Glück", you will see a message that the anchor id was added as `#grosses-glueck` (but will display as _Anchor: Großes Glück_ in the front end). This seems to be the best solution for SEO and should give you a little more flexibility naming your anchors.
+* Anchors may now encapsule content. However, if you want to use both, enclosing and not enclosing shortcodes _and_ updated from a previous version, you need to add closing slashes to your previously existing, not enclosing anchors (e.g. `[sta_anchor id="top" /]`). If you just edit new pages, don't worry.
+* You get a warning in the TinyMCE modal, if you left the field for the anchor name empty
 
 = 0.4.2 =
 Fix: Code Bug, optimizes SVG file. Thanks to Sergej Müller.

@@ -1,5 +1,5 @@
 (function() {
-	tinymce.PluginManager.requireLangPack('staButton', 'de');
+	//tinymce.PluginManager.requireLangPack('staButton', 'de');
 	tinymce.PluginManager.add('staButton', function (editor) {
 		editor.addButton('staButton', {
 			title: 'Anchor',
@@ -25,12 +25,12 @@
 									/*Validation failed, so let's tell the user about it.
 									https://stackoverflow.com/questions/34783759/how-to-validate-tinymce-popup-textbox-value
 									*/
-									editor.windowManager.alert('Please provide an anchor name!', function(){});
+									editor.windowManager.alert('Please provide an anchor name!');
 								} else {
 									editor.windowManager.close();
 
 									// anchors may not contain spaces
-									sanitizedname = e.data.name.split(' ').join('-').toLowerCase();
+									sanitizedname = sanitize(e.data.name);
 
 									// collect output to insert shortcode
 									var content = '[sta_anchor';
@@ -51,7 +51,7 @@
 									editor.insertContent(content);
 
 									if( sanitizedname != e.data.name ) {
-										editor.windowManager.alert("Anchor-ID has been changed to #"+sanitizedname).focus;
+										editor.windowManager.alert("Link: #" + sanitizedname);
 									}
 								}
 							} //onsubmit
@@ -60,4 +60,17 @@
 
 		}); // editor.addButton
 	}); // tinymce.PluginManager
+	function sanitize(value){
+		value = value.toLowerCase();
+		value = value.replace(/ä/g, 'ae');
+		value = value.replace(/ö/g, 'oe');
+		value = value.replace(/ü/g, 'ue');
+		value = value.replace(/ß/g, 'ss');
+		value = value.replace(/ /g, '-');
+		value = value.replace(/\./g, '');
+		value = value.replace(/,/g, '');
+		value = value.replace(/\(/g, '');
+		value = value.replace(/\)/g, '');
+		return value;
+	}
 })();

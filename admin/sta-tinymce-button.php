@@ -40,7 +40,7 @@ if ( ! function_exists( 'sta_register_my_tc_button' ) ) {
 	}
 }
 
-//Stylesheet for Back End
+//stylesheet for backend
 add_action( 'admin_enqueue_scripts', 'sta_admin_style' );
 if ( ! function_exists( 'sta_admin_style' ) ) {
 	function sta_admin_style() {
@@ -48,5 +48,14 @@ if ( ! function_exists( 'sta_admin_style' ) ) {
 			'sta-backend',
 			plugins_url( '../css/admin-style.css', __FILE__ )
 		);
+	}
+}
+
+add_filter( 'mce_external_languages', 'sta_custom_tinymce_plugin_add_locale' );
+if ( ! function_exists( 'sta_custom_tinymce_plugin_add_localefunction' ) ) {
+	function sta_custom_tinymce_plugin_add_locale( $locales ) {
+		$locales ['staButton'] = plugin_dir_path( __FILE__ ) . 'sta-custom-tinymce-plugin-langs.php';
+		return $locales;
+
 	}
 }

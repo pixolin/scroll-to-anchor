@@ -9,12 +9,16 @@ add_action( 'wp_enqueue_scripts', 'sta_enqueue_js' );
 
 if ( ! function_exists( 'sta_enqueue_js' ) ) {
 	/**
-	 * Enqueue JavaScript and add custiom settings
+	 * Enqueue JavaScript and add custom settings
 	 * @param  $plugin_version
 	 */
 	function sta_enqueue_js( $plugin_version ) {
 		//automatically fetch version number
-		$file_data = get_file_data( __FILE__, array( 'version' => 'Version' ) );
+		$file_data = get_file_data(
+			__FILE__, array(
+				'version' => 'Version',
+			)
+		);
 		//use minified JavaScript, if not in DEBUG mode
 		$maybe_min = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 

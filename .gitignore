@@ -3,3 +3,5 @@ config.codekit
 .codekit-cache
 /.config.codekit3
 /.phpintel
+*.po*
+*.mo
