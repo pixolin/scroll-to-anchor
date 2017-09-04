@@ -16,9 +16,9 @@ if ( ! function_exists( 'sta_anchor' ) ) {
 
 		//Shortcode Attributes
 		$pairs = array(
-			'id' => '',
-			'unsan' => '',
-			'class' => '',
+			'id' => '',    // id of the anchor, sanitized, e.g. summary-chapter-two
+			'unsan' => '', // *unsan*itized name of the anchor, e.g. Summary Chapter Two
+			'class' => '', // CSS class, if provided by user
 		);
 
 		$a = shortcode_atts( $pairs, $atts );
@@ -31,7 +31,7 @@ if ( ! function_exists( 'sta_anchor' ) ) {
 		//create the html output,
 		$html = '<span id="' . $sta_anchorname . '" ';
 
-		//add classes and display more or less
+		//add classes and optionally display anchor according to user settings
 		if ( ! isset( $current['show'] ) || 'hidden' == $a['class'] ) {
 			$html .= 'class="sta-anchor ' . $a['class'] . '" aria-hidden="true">';
 		} else {
