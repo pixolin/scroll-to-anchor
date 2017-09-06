@@ -14,7 +14,7 @@ Once an anchor has been added, you can link to it: Add and select text (e.g. "Ju
 
 Links may not contain spaces, but you can use them in your anchor names anyway. If you name your anchor e.g. _Summary Chapter Two_, you'll see an information that the _link_ to that anchor has been changed into e.g. _#summary-chapter-two_.
 
-For a <strong>better user experience</strong>, a JavaScript function replaces the typical behaviour to directly jump to the anchor. Instead the visitor of your website sees a smooth scrolling animation. (If this is too fast/slow, you can change the speed under **Reading > Settings**.)
+For a <strong>better user experience</strong>, a JavaScript function replaces the typical behaviour to directly jump to the anchor. Instead the visitor of your website sees a smooth scrolling animation. (If this is too fast/slow, you can change the speed under **Settings > Reading**.)
 
 A couple of other settings provide just as much flexibility as you may need: If your website has a sticky header, you can set an offset for the scrolling animation. You can also choose if you want anchors to be displayed in the front end and set a descriptive expression to precede the anchor's name.
 
@@ -53,6 +53,9 @@ As links may not contain spaces, your anchor name will be sanitized and spaces r
 3. Creating a link to anchor
 
 ### Changelog ###
+
+#### 0.4.3.1 ####
+Fix: replaces incorrect sanitization in shortcode, which broke shortcodes with uppercase-letters. Also corrections in l18n and readme-file.
 
 #### 0.4.3 ####
 Enhancement: TinyMCE modals now can be localized.

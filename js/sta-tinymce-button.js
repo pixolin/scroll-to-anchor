@@ -1,5 +1,4 @@
 (function() {
-	//tinymce.PluginManager.requireLangPack('staButton', 'de');
 	tinymce.PluginManager.add('staButton', function (editor) {
 		editor.addButton('staButton', {
 			title: 'Anchor',

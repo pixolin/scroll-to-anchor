@@ -23,23 +23,25 @@ if ( ! function_exists( 'sta_anchor' ) ) {
 
 		$a = shortcode_atts( $pairs, $atts );
 
-		$sta_anchorname = strtolower( str_replace( ' ', '-', $a['id'] ) );
+		$sta_id = esc_attr( $a['id'] );
+		$sta_uns = esc_attr( $a['unsan'] );
+		$sta_class = esc_attr( $a['class'] );
 
 		//fetch option to see whether anchor should be displayed
 		$current = (array) get_option( 'scroll_to_anchor' );
 
 		//create the html output,
-		$html = '<span id="' . $sta_anchorname . '" ';
+		$html = '<span id="' . $sta_id . '" ';
 
 		//add classes and optionally display anchor according to user settings
-		if ( ! isset( $current['show'] ) || 'hidden' == $a['class'] ) {
-			$html .= 'class="sta-anchor ' . $a['class'] . '" aria-hidden="true">';
+		if ( ! isset( $current['show'] ) || 'hidden' == $sta_class ) {
+			$html .= 'class="sta-anchor ' . $sta_class . '" aria-hidden="true">';
 		} else {
-			$html .= 'class="sta-anchor ' . $a['class'] . '">' . esc_attr( $current['label'] ) . ': ';
-			if ( $a['unsan'] ) {
-				$html .= $a['unsan'];
+			$html .= 'class="sta-anchor ' . $sta_class . '">' . esc_attr( $current['label'] ) . ': ';
+			if ( $sta_unsan ) {
+				$html .= $sta_unsan;
 			} else {
-				$html .= $a['id'];
+				$html .= $sta_id;
 			}
 			$html .= '&nbsp';
 		}
