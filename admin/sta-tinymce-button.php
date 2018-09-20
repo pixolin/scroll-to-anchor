@@ -13,7 +13,13 @@ if ( ! function_exists( 'sta_tinymce_button' ) ) {
 			return;
 		}
 		// verify the post type
-		if ( ! in_array( $typenow, array( 'post', 'page' ) ) ) {
+		$allowedposttypes = array( 'post', 'page' );
+		$pluginoptions    = get_option( 'scroll_to_anchor' );
+		foreach ( $pluginoptions['posttypes'] as $key => $val ) {
+			$allowedposttypes[] = esc_attr( $val );
+		}
+
+		if ( ! in_array( $typenow, $allowedposttypes ) ) {
 			return;
 		}
 		// check if WYSIWYG is enabled

@@ -8,7 +8,7 @@
 
 Are some of your readers impatient, want to skip long text and immediately jumpt to the summary? This plugin helps you to create anchors in your posts or pages and provides a smooth scrolling animation when the link to an anchor has been clicked.
 
-For more convenience the plugin adds an anchor icon to the toolbar of the visual editor. Adding a new anchor is no more than the click on that icon, after you marked a text passage or placed the cursor at the desired position of your text. A popup window will ask for a name of the anchor and then insert a shortcode into your text, which automatically gets replaced with the correct HTML in the frontend. (Need custom styling of the anchor? You may add individual CSS class names each time you insert a new anchor. If you don't need that, just leave the field empty.)
+For more convenience the plugin adds an anchor icon to the toolbar of the classic(1) visual editor for post and pages (and your own custom post types, if enabled in the settings). Adding a new anchor is no more than the click on that icon, after you marked a text passage or placed the cursor at the desired position of your text. A popup window will ask for a name of the anchor and then insert a shortcode into your text, which automatically gets replaced with the correct HTML in the frontend. (Need custom styling of the anchor? You may add individual CSS class names each time you insert a new anchor. If you don't need that, just leave the field empty.)
 
 Once an anchor has been added, you can link to it: Add and select text (e.g. "Jump to the summary"), click the link icon in the toolbar and enter the name of your anchor, preceded by a pound sign, e.g. _#summary_. That's all.
 
@@ -19,6 +19,8 @@ For a <strong>better user experience</strong>, a JavaScript function replaces th
 A couple of other settings provide just as much flexibility as you may need: If your website has a sticky header, you can set an offset for the scrolling animation. You can also choose if you want anchors to be displayed in the front end and set a descriptive expression to precede the anchor's name.
 
 Some users reported conflicts with other plugins, which (ab-)use anchor tags for various reasons. To avoid issues, this plugin already excludes Woocommerce Tabs and Bootstrap Accordions, but you _could_ still run into issues with themes or plugins. To deal with this, you can add one or more CSS class names for sections, in which this plugin should be disabled. Although this is a little more complicated than I hoped for, it seems to be the best workaround. I'm happy to hear your thoughts, how this might even be improved in the future.
+
+(1)<strong>Currently</strong> the plugin <strong>doesn't support WordPress' new editor "Gutenberg"</strong>, but I hope to catch up soon and be able to extend the functionality of this little helper plugin.
 
 I made this plugin because I love WordPress. Period. I won't ask for donations, no upsell, no sketch of the team.
 **But I love to get your feedback to learn more.**
@@ -43,6 +45,12 @@ The plugin is disabled for anchors, if
 
 Q: Can I use anchor names with spaces and mix upper-/lowercase letters?
 As links may not contain spaces, your anchor name will be sanitized and spaces replaced with hyphens. If you e.g. add an anchor and set it's name as _Summary Chapter Two_, you'll see a message that the link to this anchor should be #summary-chapter-two. Howevery, if you chose to display anchors in the front end, they will just show up as you named them, e.g. _Anchor: Summary Chapter Two_.
+
+Q: I created a custom post type. Can I get the Scroll to Anchor icon in the toolbar when editing posts of that post type?
+Go to Settings > Reading and select the custom post types, where you want the icon to appear in the toolbar.
+
+Q: Does Scroll to Anchor support WordPress' new editor Gutenberg?
+Sorry, not yet. Stay tuned.
 
 ### Screenshots ###
 ![Settings > Reading](https://github.com/pixolin/scroll-to-anchor/blob/master/assets/screenshot-1.png)

@@ -1,17 +1,17 @@
 <?php
 /*
 Plugin Name:  Scroll to Anchor
-Version:      0.4.3.1
+Version:      0.5.0
 Plugin URI:   https://github.com/pixolin/Scroll-to-anchor
-Description:  Adds jQuery function to scroll smoothly to anchors in posts and pages.
+Description:  Add anchors and use a smooth scrolling animation for a better user experience.
 Author:       Bego Mario Garde
 Author URI:   https://pixolin.de
-License:      GPLv2
+License:      GPLv2 or later
 License URI:  https://www.gnu.org/licenses/gpl-2.0.html
 Domain Path:  /languages
 Text Domain:  scroll-to-anchor
 
-(c) Bego Mario Garde, 2016
+(c) Bego Mario Garde, 2016–2018
 Scroll to Anchor is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 2 of the License, or
@@ -42,11 +42,11 @@ define( 'STA_BASE', plugin_basename( __FILE__ ) );
  * Init the plugin
  */
 function sta_init() {
-	require_once( dirname( __FILE__ ) . '/includes/sta-enqueue-js.php' );
-	require_once( dirname( __FILE__ ) . '/includes/sta-shortcode.php' );
+	require_once dirname( __FILE__ ) . '/includes/sta-enqueue-js.php';
+	require_once dirname( __FILE__ ) . '/includes/sta-shortcode.php';
 	if ( is_admin() ) {
-		require_once( dirname( __FILE__ ) . '/settings/sta-settings.php' );
-		require_once( dirname( __FILE__ ) . '/admin/sta-tinymce-button.php' );
+		require_once dirname( __FILE__ ) . '/settings/sta-settings.php';
+		require_once dirname( __FILE__ ) . '/admin/sta-tinymce-button.php';
 	};
 
 	load_plugin_textdomain( 'scroll-to-anchor', false, plugin_basename( dirname( __FILE__ ) ) . '/languages' );
