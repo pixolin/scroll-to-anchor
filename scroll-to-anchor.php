@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name:  Scroll to Anchor
-Version:      0.5.0
+Version:      0.6.0
 Plugin URI:   https://github.com/pixolin/Scroll-to-anchor
 Description:  Add anchors and use a smooth scrolling animation for a better user experience.
 Author:       Bego Mario Garde
