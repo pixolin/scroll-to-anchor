@@ -65,7 +65,7 @@ Sorry, not yet. Stay tuned.
 
 ### Changelog ###
 
-#### 0.6.0####
+#### 0.6.0 ####
 Fix: When a link with the anchor #top is clicked, Scroll to Anchor scrolls to the top of the page at the specified speed. The specified offset value is ignored.
 License now GPLv2 *or later*. Thank you Udo Meisen for the talk about OpenSource Licensing.
 
