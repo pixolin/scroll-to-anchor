@@ -51,6 +51,12 @@ The plugin is disabled for anchors, if
 Q: Can I use anchor names with spaces and mix upper-/lowercase letters?
 As links may not contain spaces, your anchor name will be sanitized and spaces replaced with hyphens. If you e.g. add an anchor and set it's name as _Summary Chapter Two_, you'll see a message that the link to this anchor should be #summary-chapter-two. Howevery, if you chose to display anchors in the front end, they will just show up as you named them, e.g. _Anchor: Summary Chapter Two_.
 
+Q: I created a custom post type. Can I get the Scroll to Anchor icon in the toolbar when editing posts of that post type?
+Go to Settings > Reading and select the custom post types, where you want the icon to appear in the toolbar.
+
+Q: Does Scroll to Anchor support WordPress' new editor Gutenberg?
+Sorry, not yet. Stay tuned.
+
 == Screenshots ==
 
 1. Settings > Reading
