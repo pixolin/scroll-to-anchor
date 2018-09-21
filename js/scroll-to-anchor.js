@@ -22,16 +22,18 @@ jQuery(document).ready(function($) {
 	}
 
 	$('a[href*="#"]')
-		.not('a[href="#"]') // Exception #1: dummy hrefs
-		.not('a[href*="#respond"]') // Exception #2: WordPress comment form
+		.not('a[href="#"]')                  // Exception #1: dummy hrefs, as often used for other purposes
+		.not('a[href*="#respond"]')          // Exception #2: WordPress comment form
 		.not('.woocommerce a[href*="#tab"]') // Exception #3: Woocommerce tabs
-		.not(exceptionclass) // Even more exceptions, when set by the user
+		.not(exceptionclass)                 // Even more exceptions, when set by the user
 		.on('click', function (e) {
 			//Split link into part before and after hash mark #
 			var linktHref = this.href.split('#');
 
-			if (linktHref[1] === '') { // Exception: orphaned # at end of URL
-				return;
+			// when linking to top of page, just scroll up and skip offset settings
+			if (linktHref[1] === 'top') {
+				$("html, body").animate({ scrollTop: 0 }, parseInt(sta_settings.speed, 10));
+				return false;
 			}
 
 			var currentUrlRoot = window.location.href.split('#')[0],
