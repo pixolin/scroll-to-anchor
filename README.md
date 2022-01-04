@@ -1,4 +1,10 @@
-# Scroll-to-anchor
+# Scroll-to-anchor [deprecated]
+
+> :warning: **This plugis is deprecated.** 
+> The block editor of WordPress now offers a much more comfortable way to set text anchors. 
+> A smooth scroll animation can be created by the CSS rule `html { scroll-behavior: smooth; }`
+> The repository remains for documentation, only.
+ 
 
 ## Add anchors and use a smooth scrolling animation for a better user experience.
 
